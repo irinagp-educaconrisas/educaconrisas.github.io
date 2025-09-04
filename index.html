@@ -5,6 +5,289 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EducaConRisas · Orientación educativa para familias</title>
   <meta name="description" content="Irina García Pintado – Pedagoga y psicóloga en formación. Orientación educativa para familias: límites con amor, hábitos de estudio y convivencia con humor." />
+  <meta name="theme-color" content="#74C6CE" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --teal:#74C6CE;      /* E */
+      --coral:#FF978B;    /* c */
+      --yellow:#FFD180;  /* R */
+      --brand:#16849F;        /* Azul palabra */
+      --brand-hover:#0F6D82;
+      --focus:#FF978B;
+      --dark:#232323;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --container:1180px;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--dark);background:var(--bg);}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:var(--brand)}
+    a:hover{color:var(--brand-hover)}
+    .container{width:min(100%,var(--container));margin-inline:auto;padding-inline:20px}
+
+    .btn{display:inline-flex;gap:.6rem;align-items:center;padding:14px 22px;border-radius:999px;
+         font-weight:600;border:2px solid var(--brand);background:var(--brand);color:#fff;transition:.2s;}
+    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow);background:var(--brand-hover);border-color:var(--brand-hover)}
+    .btn.outline{background:#fff;color:var(--brand)}
+    .btn.outline:hover{background:var(--teal);border-color:var(--teal);color:#08343F}
+    .btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+    header.nav{position:sticky;top:0;z-index:50;background:#ffffffd6;backdrop-filter:saturate(180%) blur(8px);
+      border-bottom:1px solid #eef0f2}
+    header .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 12px;border-radius:10px;color:#111}
+    nav a:hover{background:#f4f7f8}
+    nav a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+    .hero{background:linear-gradient(180deg, #74C6CE22 0%, #fff 55%);}
+    .hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:70px 0 40px}
+    .kicker{font-weight:600;color:var(--brand);letter-spacing:.02em;margin-bottom:10px}
+    h1{font-family:Poppins,Inter,sans-serif;font-size:clamp(34px,4.2vw,54px);line-height:1.1;margin:10px 0 14px}
+    .lead{font-size:clamp(16px,1.4vw,19px);color:#2b2b2b;max-width:60ch}
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .tagline{margin-top:12px;color:#374151}
+
+    section{padding:60px 0}
+    h2{font-family:Poppins,Inter,sans-serif;font-size:clamp(26px,3vw,36px);margin:0 0 12px}
+    .sub{color:var(--muted);margin:0 0 28px}
+
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{border:1px solid #edf0f2;border-radius:var(--radius);padding:22px;background:#fff;box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 6px;font-size:20px}
+    .icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#f2f7f8;margin-bottom:8px}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .step{padding:24px;border-radius:var(--radius);border:1px solid #edf0f2;background:#fff}
+    .badge{display:inline-block;background:var(--yellow);color:#111;padding:6px 10px;border-radius:999px;font-weight:600;font-size:14px;margin-bottom:8px}
+
+    .pricing{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .price-card{border:1px solid #edf0f2;border-radius:var(--radius);padding:24px;background:#fff;box-shadow:var(--shadow)}
+    .price{font-size:28px;font-weight:700;color:#111}
+    .muted{color:var(--muted)}
+
+    .about{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center}
+    .about .bubble{background:linear-gradient(180deg, #fff, #f7fafb);border:1px solid #eef0f2;border-radius:var(--radius);padding:22px}
+
+    .contact .cta{display:flex;gap:14px;flex-wrap:wrap}
+    footer{padding:30px 0;color:#6b7280;border-top:1px solid #eef0f2;background:#fbfcfd}
+
+    @media (max-width: 960px){
+      .hero .wrap{grid-template-columns:1fr;}
+      .grid.cols-3{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .grid.cols-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand" style="display:flex;align-items:center;gap:.7rem">
+        <img src="logo_header.png" alt="EducaConRisas" height="40">
+      </div>
+      <nav aria-label="principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Qué trabajamos</a></li>
+          <li><a href="#pasos">Cómo funciona</a></li>
+          <li><a href="#packs">Packs</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container wrap">
+      <div>
+        <img src="logo_full.png" alt="EducaConRisas" style="max-width:260px;opacity:.95">
+        <div class="kicker">Orientación educativa para familias</div>
+        <h1>Límites con amor… <br/>y que no falten las risas en casa.</h1>
+        <p class="lead">Soy <strong>Irina García Pintado</strong>, pedagoga y psicóloga en formación. Acompaño la crianza de los peques y el crecimiento de toda la familia con herramientas prácticas, claras y cercanas.</p>
+        <div class="cta">
+          <a class="btn" href="#contacto" aria-label="Reservar sesión">Reservar sesión</a>
+          <a class="btn outline" href="https://wa.me/34620716794" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">WhatsApp</a>
+        </div>
+        <p class="tagline"><em>Orientación educativa y psicoeducativa (no terapia clínica).</em></p>
+      </div>
+      <div>
+        <!-- Decorative shapes using brand colors -->
+        <svg viewBox="0 0 600 520" role="img" aria-label="Ilustración abstracta" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="600" height="520" fill="none"/>
+          <circle cx="150" cy="320" r="80" fill="#74C6CE" opacity=".23"/>
+          <circle cx="300" cy="240" r="100" fill="#FF978B" opacity=".20"/>
+          <circle cx="460" cy="340" r="85" fill="#FFD180" opacity=".28"/>
+          <rect x="80" y="400" width="440" height="18" rx="9" fill="#e6eef0"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios">
+    <div class="container">
+      <h2>Qué trabajamos</h2>
+      <p class="sub">Temas frecuentes que abordamos paso a paso, con materiales listos para aplicar.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="icon">📱</div>
+          <h3>Pantallas y límites</h3>
+          <p class="muted">Contrato familiar, tiempos saludables y alternativas sin peleas.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📚</div>
+          <h3>Hábitos de estudio</h3>
+          <p class="muted">Rutinas realistas, calendario visual y técnicas de repaso activo.</p>
+        </div>
+        <div class="card">
+          <div class="icon">😊</div>
+          <h3>Convivencia y emociones</h3>
+          <p class="muted">Normas claras, refuerzos positivos y acuerdos sin gritos.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>TDAH en casa</h3>
+          <p class="muted">Organización, timers, checklist y coordinación con el centro.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🌧️</div>
+          <h3>Rabietas y desescalada</h3>
+          <p class="muted">Estrategias de calma y comunicación por edades.</p>
+        </div>
+        <div class="card">
+          <div class="icon">👨‍👩‍👧‍👦</div>
+          <h3>Reunión familiar</h3>
+          <p class="muted">Agenda semanal, acuerdos y celebraciones para crecer juntos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="pasos" style="background:linear-gradient(180deg,#fff,#fbfcfd)">
+    <div class="container">
+      <h2>Cómo funciona</h2>
+      <p class="sub">Tres pasos, resultados desde el primer día.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="badge">1</span>
+          <h3>Sesión online 60’</h3>
+          <p class="muted">Definimos objetivos, entendemos el contexto y entrenamos estrategias.</p>
+        </div>
+        <div class="step">
+          <span class="badge">2</span>
+          <h3>Plan de 1 página</h3>
+          <p class="muted">En 48 h recibes un plan claro con pasos y materiales listos para usar.</p>
+        </div>
+        <div class="step">
+          <span class="badge">3</span>
+          <h3>Seguimiento</h3>
+          <p class="muted">Email a los 7–10 días para ajustar y consolidar cambios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING / PACKS -->
+  <section id="packs">
+    <div class="container">
+      <h2>Packs recomendados</h2>
+      <p class="sub">Precios orientativos. Consulta disponibilidad.</p>
+      <div class="pricing">
+        <div class="price-card">
+          <h3>Pack Pantallas en Paz</h3>
+          <p class="muted">2 sesiones · contrato familiar · rutina visual · seguimiento</p>
+          <p class="price">120 €</p>
+        </div>
+        <div class="price-card">
+          <h3>Pack Hábitos 14 días</h3>
+          <p class="muted">2 sesiones · plan de estudio · técnicas · calendario semanal</p>
+          <p class="price">120 €</p>
+        </div>
+        <div class="price-card">
+          <h3>Pack Convivencia</h3>
+          <p class="muted">2–3 sesiones · normas claras · refuerzos · resolución de conflictos</p>
+          <p class="price">180–240 €</p>
+        </div>
+        <div class="price-card">
+          <h3>Sesión individual</h3>
+          <p class="muted">60’ de orientación + plan de 1 página en 48 h</p>
+          <p class="price">55 €</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="sobre-mi" class="about">
+    <div class="container about">
+      <div class="bubble">
+        <h2>Sobre mí</h2>
+        <p>Soy <strong>Irina García Pintado</strong>, pedagoga y psicóloga en formación. Trabajo con colegios, AMPAs y proyectos municipales impartiendo talleres y formación práctica. En EducaConRisas traduzco la evidencia en pasos sencillos para casa: límites con amor, hábitos que funcionan y bienestar para toda la familia.</p>
+        <p class="muted">*Orientación educativa y psicoeducativa (no terapia clínica).* </p>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Qué me diferencia</h3>
+          <ul>
+            <li>Plan de acción de 1 página (48 h)</li>
+            <li>Materiales listos para usar al día siguiente</li>
+            <li>Tono cercano, práctico… y con humor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto" class="contact" style="background:linear-gradient(180deg,#fbfcfd,#fff)">
+    <div class="container">
+      <h2>Reserva y contacto</h2>
+      <p class="sub">Elige el canal que prefieras. Respondo en horario de tarde.</p>
+      <div class="cta">
+        <a class="btn" href="mailto:irigpintado248@gmail.com?subject=Reserva%20sesión%20EducaConRisas">📩 Escríbeme</a>
+        <a class="btn outline" href="tel:+34620716794">📞 Llamar</a>
+        <a class="btn outline" href="https://wa.me/34620716794" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+      <p class="muted" style="margin-top:14px">Email: <a href="mailto:irigpintado248@gmail.com">irigpintado248@gmail.com</a> · Tel.: <a href="tel:+34620716794">620 716 794</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+      <p>© <span id="y"></span> EducaConRisas · Irina García Pintado</p>
+      <p class="muted">Privacidad y protección de datos disponible bajo solicitud.</p>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EducaConRisas · Orientación educativa para familias</title>
+  <meta name="description" content="Irina García Pintado – Pedagoga y psicóloga en formación. Orientación educativa para familias: límites con amor, hábitos de estudio y convivencia con humor." />
 
   <!-- SEO / Social -->
   <meta property="og:title" content="EducaConRisas · Orientación educativa para familias" />
