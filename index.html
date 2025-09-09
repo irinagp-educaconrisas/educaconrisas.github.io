@@ -3,282 +3,249 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EducaConRisas · Orientación educativa para familias</title>
-  <meta name="description" content="Irina García Pintado – Pedagoga y psicóloga en formación. Orientación educativa para familias: límites con amor, hábitos de estudio y convivencia con humor." />
-  <meta name="theme-color" content="#74C6CE" />
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <title>EducaConRisas – Orientación educativa para familias</title>
+  <meta name="description" content="Orientación educativa cercana y práctica: límites con amor, hábitos de estudio, convivencia, TDAH en casa, rabietas y reuniones familiares. Primera sesión gratis." />
+  <link rel="preload" as="image" href="assets/familia-fondo.jpg" />
   <style>
     :root{
-      --teal:#74C6CE;      /* E */
-      --coral:#FF978B;    /* c */
-      --yellow:#FFD180;  /* R */
-      --brand:#16849F;        /* Azul palabra */
-      --brand-hover:#0F6D82;
-      --focus:#FF978B;
-      --dark:#232323;
-      --muted:#6b7280;
+      /* Colores del logo */
+      --educa-blue:#2da6b1;   /* Azul (Educa) */
+      --con-salmon:#f88379;   /* Rosa salmón (Con) */
+      --risas-yellow:#f9c74f; /* Amarillo (Risas) */
+      --ink:#23303f;
+      --muted:#5b6a7a;
       --bg:#ffffff;
-      --container:1180px;
+      --card:#f6fafb;
       --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --shadow:0 8px 28px rgba(0,0,0,.08);
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--dark);background:var(--bg);}
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:var(--brand)}
-    a:hover{color:var(--brand-hover)}
-    .container{width:min(100%,var(--container));margin-inline:auto;padding-inline:20px}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
 
-    .btn{display:inline-flex;gap:.6rem;align-items:center;padding:14px 22px;border-radius:999px;
-         font-weight:600;border:2px solid var(--brand);background:var(--brand);color:#fff;transition:.2s;}
-    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow);background:var(--brand-hover);border-color:var(--brand-hover)}
-    .btn.outline{background:#fff;color:var(--brand)}
-    .btn.outline:hover{background:var(--teal);border-color:var(--teal);color:#08343F}
-    .btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e9eef3;backdrop-filter:saturate(180%) blur(8px)}
+    .wrap{max-width:1100px;margin:0 auto;padding:10px 16px}
+    .nav .row{display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:40px;height:auto}
+    .name{font-weight:900;letter-spacing:.2px;font-size:18px}
+    .name .edu{color:var(--educa-blue)}
+    .name .con{color:var(--con-salmon)}
+    .name .risas{color:var(--risas-yellow)}
+    .menu{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
+    .menu a{padding:8px 10px;border-radius:10px;color:#344;opacity:.95}
+    .menu a:hover{background:#f2f7f8}
 
-    header.nav{position:sticky;top:0;z-index:50;background:#ffffffd6;backdrop-filter:saturate(180%) blur(8px);
-      border-bottom:1px solid #eef0f2}
-    header .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
-    nav a{padding:8px 12px;border-radius:10px;color:#111}
-    nav a:hover{background:#f4f7f8}
-    nav a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+    /* HERO */
+    .hero{position:relative;color:#073b49;min-height:72vh;display:grid;place-items:center;text-align:center;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("assets/familia-fondo.jpg") center/cover no-repeat;z-index:-1}
+    .hero-inner{max-width:980px;padding:48px 16px}
+    .hero-logo{display:inline-flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:14px}
+    .hero-logo img{width:140px;height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.15))}
+    .hero-logo .title{font-weight:900;font-size:clamp(28px,6vw,44px)}
+    .hero h2{margin:8px 0 12px;font-size:clamp(20px,3.6vw,28px);font-weight:800}
+    .tagline{font-size:clamp(18px,3.2vw,22px);font-weight:800}
+    .tagline .limites{color:#fff;background:var(--educa-blue);padding:3px 10px;border-radius:10px}
+    .tagline .amor{color:#fff;background:var(--con-salmon);padding:3px 10px;border-radius:10px}
+    .tagline .divertidas{color:#000;background:var(--risas-yellow);padding:3px 10px;border-radius:10px}
+    .cta{margin-top:18px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800}
+    .btn.primary{background:var(--educa-blue);color:#fff}
+    .btn.ghost{border:2px solid var(--educa-blue);color:var(--educa-blue)}
 
-    .hero{background:linear-gradient(180deg, #74C6CE22 0%, #fff 55%);}
-    .hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:70px 0 40px}
-    .kicker{font-weight:600;color:var(--brand);letter-spacing:.02em;margin-bottom:10px}
-    h1{font-family:Poppins,Inter,sans-serif;font-size:clamp(34px,4.2vw,54px);line-height:1.1;margin:10px 0 14px}
-    .lead{font-size:clamp(16px,1.4vw,19px);color:#2b2b2b;max-width:60ch}
-    .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-    .tagline{margin-top:12px;color:#374151}
+    /* SECCIONES BASE */
+    .section{max-width:1100px;margin:0 auto;padding:56px 16px}
 
-    section{padding:60px 0}
-    h2{font-family:Poppins,Inter,sans-serif;font-size:clamp(26px,3vw,36px);margin:0 0 12px}
-    .sub{color:var(--muted);margin:0 0 28px}
+    /* SOBRE MI */
+    .sobre-mi{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
+    .sobre-mi .pic{width:120px;height:120px;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:var(--shadow)}
 
-    .grid{display:grid;gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .card{border:1px solid #edf0f2;border-radius:var(--radius);padding:22px;background:#fff;box-shadow:var(--shadow)}
-    .card h3{margin:8px 0 6px;font-size:20px}
-    .icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#f2f7f8;margin-bottom:8px}
+    /* TE IMAGINAS (bloque azul) */
+    .panel-azul{background:var(--educa-blue);color:#eaf9fb;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .panel-azul strong{color:#fff}
 
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .step{padding:24px;border-radius:var(--radius);border:1px solid #edf0f2;background:#fff}
-    .badge{display:inline-block;background:var(--yellow);color:#111;padding:6px 10px;border-radius:999px;font-weight:600;font-size:14px;margin-bottom:8px}
+    /* SOL + TEMAS */
+    .sol-wrap{display:grid;gap:22px}
+    .sol{display:grid;place-items:center}
+    .sol svg{max-width:700px;width:100%}
+    .temas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;border:1px solid #e6edf5}
+    .card h4{margin:0 0 6px}
+    .card p{margin:0;color:var(--muted)}
 
-    .pricing{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .price-card{border:1px solid #edf0f2;border-radius:var(--radius);padding:24px;background:#fff;box-shadow:var(--shadow)}
-    .price{font-size:28px;font-weight:700;color:#111}
-    .muted{color:var(--muted)}
+    /* ACOMPANAMIENTO */
+    .acomp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .step{background:var(--con-salmon);color:#fff;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .step h3{margin:0 0 6px}
 
-    .about{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center}
-    .about .bubble{background:linear-gradient(180deg, #fff, #f7fafb);border:1px solid #eef0f2;border-radius:var(--radius);padding:22px}
+    /* POR QUE ECR */
+    .porque{background:#fff;border:1px solid #e6edf5;border-radius:var(--radius);padding:20px}
 
-    .contact .cta{display:flex;gap:14px;flex-wrap:wrap}
-    footer{padding:30px 0;color:#6b7280;border-top:1px solid #eef0f2;background:#fbfcfd}
+    /* CONTACTO */
+    .contacto .list{display:flex;flex-wrap:wrap;gap:12px}
+    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #e6edf5;border-radius:999px;padding:10px 14px;background:#fff}
+    .chip b{color:var(--educa-blue)}
 
-    @media (max-width: 960px){
-      .hero .wrap{grid-template-columns:1fr;}
-      .grid.cols-3{grid-template-columns:1fr 1fr}
-      .steps{grid-template-columns:1fr}
-      .pricing{grid-template-columns:1fr}
-      .about{grid-template-columns:1fr}
-    }
-    @media (max-width: 640px){
-      .grid.cols-3{grid-template-columns:1fr}
+    footer{padding:28px 16px;color:#667;text-align:center}
+
+    /* Responsive */
+    @media (max-width:640px){
+      .sobre-mi{grid-template-columns:1fr}
+      .sobre-mi .pic{margin:0 auto}
     }
   </style>
 </head>
 <body>
   <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand" style="display:flex;align-items:center;gap:.7rem">
-        <img src="logo_header.png" alt="EducaConRisas" height="40">
+  <nav class="nav" id="inicio">
+    <div class="wrap">
+      <div class="row">
+        <a class="brand" href="#inicio" aria-label="EducaConRisas">
+          <img src="assets/logo-ecr.png" alt="Logo EducaConRisas" />
+          <span class="name"><span class="edu">Educa</span><span class="con">Con</span><span class="risas">Risas</span></span>
+        </a>
+        <div class="menu" role="navigation" aria-label="principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#te-imaginas">Te imaginas</a>
+          <a href="#temas">Qué trabajaremos juntos</a>
+          <a href="#acompanamiento">Acompañamiento</a>
+          <a href="#porque-ecr">Por qué ECR</a>
+          <a href="#contacto">Contacto</a>
+        </div>
       </div>
-      <nav aria-label="principal">
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#servicios">Qué trabajamos</a></li>
-          <li><a href="#pasos">Cómo funciona</a></li>
-          <li><a href="#packs">Packs</a></li>
-          <li><a href="#sobre-mi">Sobre mí</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-logo">
+        <img src="assets/logo-ecr.png" alt="EducaConRisas" />
+        <div class="title"><span class="edu">Educa</span><span class="con">Con</span><span class="risas">Risas</span></div>
+      </div>
+      <h2>Orientación educativa para familias</h2>
+      <p class="tagline">
+        <span class="limites">Límites</span> con <span class="amor">amor</span> para que las crianzas sean más fáciles y <span class="divertidas">divertidas</span>.
+      </p>
+      <div class="cta">
+        <a href="https://wa.me/34620716794" class="btn primary" target="_blank" rel="noopener">🎁 Primera sesión GRATIS</a>
+        <a href="#contacto" class="btn ghost">Reservar ahora</a>
+      </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="inicio" class="hero">
-    <div class="container wrap">
+  <!-- SOBRE MI -->
+  <section class="section" id="sobre-mi">
+    <div class="sobre-mi">
+      <div class="pic"><img src="assets/irina.jpg" alt="Irina García" /></div>
       <div>
-        <img src="logo_full.png" alt="EducaConRisas" style="max-width:260px;opacity:.95">
-        <div class="kicker">Orientación educativa para familias</div>
-        <h1>Límites con amor… <br/>y que no falten las risas en casa.</h1>
-        <p class="lead">Soy <strong>Irina García Pintado</strong>, pedagoga y psicóloga en formación. Acompaño la crianza de los peques y el crecimiento de toda la familia con herramientas prácticas, claras y cercanas.</p>
-        <div class="cta">
-          <a class="btn" href="#contacto" aria-label="Reservar sesión">Reservar sesión</a>
-          <a class="btn outline" href="https://wa.me/34620716794" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">WhatsApp</a>
-        </div>
-        <p class="tagline"><em>Orientación educativa y psicoeducativa (no terapia clínica).</em></p>
-      </div>
-      <div>
-        <!-- Decorative shapes using brand colors -->
-        <svg viewBox="0 0 600 520" role="img" aria-label="Ilustración abstracta" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" width="600" height="520" fill="none"/>
-          <circle cx="150" cy="320" r="80" fill="#74C6CE" opacity=".23"/>
-          <circle cx="300" cy="240" r="100" fill="#FF978B" opacity=".20"/>
-          <circle cx="460" cy="340" r="85" fill="#FFD180" opacity=".28"/>
-          <rect x="80" y="400" width="440" height="18" rx="9" fill="#e6eef0"/>
-        </svg>
+        <h2>Hola, soy Irina García</h2>
+        <p>Pedagoga y <strong>psicóloga en formación</strong>. Acompaño a familias para poner <em>límites con amor</em>, crear rutinas realistas y disfrutar más de la convivencia. He creado <strong><span style="color:var(--educa-blue)">Educa</span><span style="color:var(--con-salmon)">Con</span><span style="color:var(--risas-yellow)">Risas</span></strong> como un espacio práctico y cercano para transformar la crianza del “no sabemos por dónde empezar” al “¡lo estamos consiguiendo!”.</p>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="servicios">
-    <div class="container">
-      <h2>Qué trabajamos</h2>
-      <p class="sub">Temas frecuentes que abordamos paso a paso, con materiales listos para aplicar.</p>
-      <div class="grid cols-3">
-        <div class="card">
-          <div class="icon">📱</div>
-          <h3>Pantallas y límites</h3>
-          <p class="muted">Contrato familiar, tiempos saludables y alternativas sin peleas.</p>
-        </div>
-        <div class="card">
-          <div class="icon">📚</div>
-          <h3>Hábitos de estudio</h3>
-          <p class="muted">Rutinas realistas, calendario visual y técnicas de repaso activo.</p>
-        </div>
-        <div class="card">
-          <div class="icon">😊</div>
-          <h3>Convivencia y emociones</h3>
-          <p class="muted">Normas claras, refuerzos positivos y acuerdos sin gritos.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🧠</div>
-          <h3>TDAH en casa</h3>
-          <p class="muted">Organización, timers, checklist y coordinación con el centro.</p>
-        </div>
-        <div class="card">
-          <div class="icon">🌧️</div>
-          <h3>Rabietas y desescalada</h3>
-          <p class="muted">Estrategias de calma y comunicación por edades.</p>
-        </div>
-        <div class="card">
-          <div class="icon">👨‍👩‍👧‍👦</div>
-          <h3>Reunión familiar</h3>
-          <p class="muted">Agenda semanal, acuerdos y celebraciones para crecer juntos.</p>
-        </div>
+  <!-- TE IMAGINAS -->
+  <section class="section" id="te-imaginas">
+    <div class="panel-azul">
+      <p><strong>¿Te imaginas</strong> que la gran tarea de ser padre y madre se llegue a convertir en un disfrute? <strong>EducaConRisas</strong> se ha creado como recurso para contribuir a calmar la angustia que puede generar la crianza y ofrecer <strong>herramientas concretas</strong>, acuerdos familiares y seguimiento para que no os sintáis solos en el proceso.</p>
+    </div>
+  </section>
+
+  <!-- SOL + TEMAS -->
+  <section class="section sol-wrap" id="temas">
+    <div class="sol" aria-hidden="true">
+      <svg viewBox="0 0 800 600" role="img" aria-label="¿Qué trabajaremos juntos?">
+        <defs>
+          <radialGradient id="g" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff176" />
+            <stop offset="100%" stop-color="var(--risas-yellow)" />
+          </radialGradient>
+        </defs>
+        <g stroke="#ffd54f" stroke-width="10" stroke-linecap="round">
+          <line x1="400" y1="110" x2="400" y2="20" />
+          <line x1="520" y1="140" x2="600" y2="70" />
+          <line x1="590" y1="240" x2="700" y2="230" />
+          <line x1="520" y1="360" x2="610" y2="430" />
+          <line x1="400" y1="400" x2="400" y2="520" />
+          <line x1="280" y1="360" x2="190" y2="430" />
+          <line x1="210" y1="240" x2="100" y2="230" />
+          <line x1="280" y1="140" x2="200" y2="70" />
+        </g>
+        <circle cx="400" cy="260" r="120" fill="url(#g)" stroke="#ffca28" stroke-width="6" />
+        <text x="400" y="255" text-anchor="middle" font-size="22" font-weight="800" fill="#333">¿Qué trabajaremos</text>
+        <text x="400" y="285" text-anchor="middle" font-size="22" font-weight="800" fill="#333">juntos?</text>
+      </svg>
+    </div>
+
+    <div class="temas">
+      <div class="card">
+        <h4>📱 Pantallas y límites</h4>
+        <p>Contrato familiar, tiempos saludables y alternativas sin peleas.</p>
+      </div>
+      <div class="card">
+        <h4>📚 Hábitos de estudio</h4>
+        <p>Rutinas realistas, calendario visual y repaso activo.</p>
+      </div>
+      <div class="card">
+        <h4>😊 Convivencia y emociones</h4>
+        <p>Normas claras, refuerzo positivo y acuerdos sin gritos.</p>
+      </div>
+      <div class="card">
+        <h4>🧠 TDAH en casa</h4>
+        <p>Organización, timers, checklist y coordinación con el centro.</p>
+      </div>
+      <div class="card">
+        <h4>🌧️ Rabietas y desescalada</h4>
+        <p>Estrategias de calma y comunicación por edades.</p>
+      </div>
+      <div class="card">
+        <h4>👨‍👩‍👧‍👦 Reunión familiar</h4>
+        <p>Agenda semanal, acuerdos y celebraciones para crecer juntos.</p>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section id="pasos" style="background:linear-gradient(180deg,#fff,#fbfcfd)">
-    <div class="container">
-      <h2>Cómo funciona</h2>
-      <p class="sub">Tres pasos, resultados desde el primer día.</p>
-      <div class="steps">
-        <div class="step">
-          <span class="badge">1</span>
-          <h3>Sesión online 60’</h3>
-          <p class="muted">Definimos objetivos, entendemos el contexto y entrenamos estrategias.</p>
-        </div>
-        <div class="step">
-          <span class="badge">2</span>
-          <h3>Plan de 1 página</h3>
-          <p class="muted">En 48 h recibes un plan claro con pasos y materiales listos para usar.</p>
-        </div>
-        <div class="step">
-          <span class="badge">3</span>
-          <h3>Seguimiento</h3>
-          <p class="muted">Email a los 7–10 días para ajustar y consolidar cambios.</p>
-        </div>
+  <!-- ACOMPANAMIENTO -->
+  <section class="section" id="acompanamiento">
+    <h2 style="margin-top:0">Acompañamiento</h2>
+    <div class="acomp">
+      <div class="step">
+        <h3>🎁 Primera sesión <u>GRATIS</u></h3>
+        <p>Conocemos vuestro caso sin compromiso y definimos necesidades.</p>
+      </div>
+      <div class="step">
+        <h3>📋 Plan de acción <u>PERSONALIZADO</u></h3>
+        <p>Diseño adaptado a vuestra situación: pasos, materiales y ejemplos.</p>
+      </div>
+      <div class="step">
+        <h3>🤝 Seguimiento <u>CERCANO</u></h3>
+        <p>Varias sesiones para resolver dudas, ajustar estrategias y celebrar avances.</p>
       </div>
     </div>
   </section>
 
-  <!-- PRICING / PACKS -->
-  <section id="packs">
-    <div class="container">
-      <h2>Packs recomendados</h2>
-      <p class="sub">Precios orientativos. Consulta disponibilidad.</p>
-      <div class="pricing">
-        <div class="price-card">
-          <h3>Pack Pantallas en Paz</h3>
-          <p class="muted">2 sesiones · contrato familiar · rutina visual · seguimiento</p>
-          <p class="price">120 €</p>
-        </div>
-        <div class="price-card">
-          <h3>Pack Hábitos 14 días</h3>
-          <p class="muted">2 sesiones · plan de estudio · técnicas · calendario semanal</p>
-          <p class="price">120 €</p>
-        </div>
-        <div class="price-card">
-          <h3>Pack Convivencia</h3>
-          <p class="muted">2–3 sesiones · normas claras · refuerzos · resolución de conflictos</p>
-          <p class="price">180–240 €</p>
-        </div>
-        <div class="price-card">
-          <h3>Sesión individual</h3>
-          <p class="muted">60’ de orientación + plan de 1 página en 48 h</p>
-          <p class="price">55 €</p>
-        </div>
-      </div>
+  <!-- POR QUÉ ECR -->
+  <section class="section" id="porque-ecr">
+    <div class="porque">
+      <h2>¿Por qué <span class="edu">E</span><span class="con">C</span><span class="risas">R</span>?</h2>
+      <p>Porque la crianza no debería vivirse en soledad. En <strong>EducaConRisas</strong> acompañamos con una mirada pedagógica y afectiva para que cada familia encuentre su propio equilibrio entre límites y cariño.</p>
+      <p>Como <strong>pedagoga</strong> y <strong>psicóloga en formación</strong>, Irina integra herramientas prácticas (contratos de pantallas, rutinas visuales, técnicas de estudio, desescalada por edades) con un estilo cercano y claro. Transformamos “todo son peleas” en “tenemos acuerdos que funcionan”.</p>
+      <ul>
+        <li>Metodología sencilla y accionable, centrada en objetivos.</li>
+        <li>Materiales listos para usar (checklists, calendarios, guías).</li>
+        <li>Seguimiento realista para consolidar hábitos.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="sobre-mi" class="about">
-    <div class="container about">
-      <div class="bubble">
-        <h2>Sobre mí</h2>
-        <p>Soy <strong>Irina García Pintado</strong>, pedagoga y psicóloga en formación. Trabajo con colegios, AMPAs y proyectos municipales impartiendo talleres y formación práctica. En EducaConRisas traduzco la evidencia en pasos sencillos para casa: límites con amor, hábitos que funcionan y bienestar para toda la familia.</p>
-        <p class="muted">*Orientación educativa y psicoeducativa (no terapia clínica).* </p>
-      </div>
-      <div>
-        <div class="card">
-          <h3>Qué me diferencia</h3>
-          <ul>
-            <li>Plan de acción de 1 página (48 h)</li>
-            <li>Materiales listos para usar al día siguiente</li>
-            <li>Tono cercano, práctico… y con humor</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contacto" class="contact" style="background:linear-gradient(180deg,#fbfcfd,#fff)">
-    <div class="container">
-      <h2>Reserva y contacto</h2>
-      <p class="sub">Elige el canal que prefieras. Respondo en horario de tarde.</p>
-      <div class="cta">
-        <a class="btn" href="mailto:irigpintado248@gmail.com?subject=Reserva%20sesión%20EducaConRisas">📩 Escríbeme</a>
-        <a class="btn outline" href="tel:+34620716794">📞 Llamar</a>
-        <a class="btn outline" href="https://wa.me/34620716794" target="_blank" rel="noopener">💬 WhatsApp</a>
-      </div>
-      <p class="muted" style="margin-top:14px">Email: <a href="mailto:irigpintado248@gmail.com">irigpintado248@gmail.com</a> · Tel.: <a href="tel:+34620716794">620 716 794</a></p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
-      <p>© <span id="y"></span> EducaConRisas · Irina García Pintado</p>
-      <p class="muted">Privacidad y protección de datos disponible bajo solicitud.</p>
-    </div>
-  </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+  <!-- CONTACTO -->
+  <section class="section contacto" id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Hablamos? Reserva tu primera sesión gratuita o escríbeme directamente:</p>
+    <div class="list">
+      <a class="chip" href="https://wa.me/34620716794" target="_blank" rel="noopener">
