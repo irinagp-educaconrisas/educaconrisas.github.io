@@ -67,8 +67,9 @@
     .sobre-mi .pic img{width:100%;height:100%;object-fit:cover}
 
     /* TE IMAGINAS (bloque azul) */
-    .panel-azul{background:var(--educa-blue-light);color:#eaf9fb;border-radius:0;padding:28px 16px;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);box-shadow:none}
-    .panel-azul strong{color:#fff}
+    .panel-azul{background:var(--educa-blue-light);color:#000;border-radius:0;padding:32px 0;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);box-shadow:none}
+    .panel-azul p{max-width:1100px;margin:0 auto;padding:0 16px}
+    .panel-azul strong{color:#000}
     .panel-azul strong{color:#fff}
 
     /* SOL + TEMAS */
@@ -184,14 +185,33 @@
   <!-- SOL + TEMAS (sol interactivo) -->
   <section class="sun-wrap" id="temas">
     <div class="sun" id="sun">
-      <svg viewBox="0 0 800 500" role="img" aria-label="¿Qué trabajaremos juntos?">
+      <svg viewBox="0 0 800 500" role="img" aria-label="¿Qué trabajaremos juntos?" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
           <radialGradient id="g2" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#fff176" />
+            <stop offset="0%" stop-color="#fff8a6" />
             <stop offset="100%" stop-color="var(--risas-yellow)" />
           </radialGradient>
+          <!-- Rayo corto reusable -->
+          <line id="sray" x1="400" y1="250" x2="400" y2="195" stroke="#ffe58f" stroke-width="8" stroke-linecap="round" />
         </defs>
-        <!-- Rayos con quiebro al final -->
+
+        <!-- Corona de rayos cortos (12) -->
+        <g>
+          <use xlink:href="#sray" />
+          <use xlink:href="#sray" transform="rotate(30 400 250)" />
+          <use xlink:href="#sray" transform="rotate(60 400 250)" />
+          <use xlink:href="#sray" transform="rotate(90 400 250)" />
+          <use xlink:href="#sray" transform="rotate(120 400 250)" />
+          <use xlink:href="#sray" transform="rotate(150 400 250)" />
+          <use xlink:href="#sray" transform="rotate(180 400 250)" />
+          <use xlink:href="#sray" transform="rotate(210 400 250)" />
+          <use xlink:href="#sray" transform="rotate(240 400 250)" />
+          <use xlink:href="#sray" transform="rotate(270 400 250)" />
+          <use xlink:href="#sray" transform="rotate(300 400 250)" />
+          <use xlink:href="#sray" transform="rotate(330 400 250)" />
+        </g>
+
+        <!-- Rayos largos con quiebro al final -->
         <g stroke="#ffd54f" stroke-width="10" stroke-linecap="round" fill="none">
           <!-- izquierda arriba -->
           <polyline points="330,180 240,130 160,130" />
@@ -206,10 +226,11 @@
           <!-- derecha abajo -->
           <polyline points="460,330 540,380 650,420" />
         </g>
+        
         <!-- Sol -->
         <circle cx="400" cy="250" r="110" fill="url(#g2)" stroke="#ffca28" stroke-width="6" />
-        <text x="400" y="243" text-anchor="middle" font-size="22" font-weight="800" fill="#333">¿Qué trabajaremos</text>
-        <text x="400" y="273" text-anchor="middle" font-size="22" font-weight="800" fill="#333">juntos?</text>
+        <text class="sun-title" x="400" y="242" text-anchor="middle" font-size="23" font-weight="600" fill="#333">¿Qué trabajaremos</text>
+        <text class="sun-title" x="400" y="272" text-anchor="middle" font-size="23" font-weight="600" fill="#333">juntos?</text>
       </svg>
 
       <!-- Etiquetas en los extremos de los rayos -->
