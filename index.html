@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EducaConRisas – Orientación educativa para familias</title>
   <meta name="description" content="Orientación educativa cercana y práctica: límites con amor, hábitos de estudio, convivencia, TDAH en casa, rabietas y reuniones familiares. Primera sesión gratis." />
-  <link rel="preload" as="image" href="assets/familia-fondo.png" />
+  <link rel="preload" as="image" href="./assets/familia-fondo.png" />
   <style>
     :root{
-      /* Colores del logo */
       --educa-blue:#2da6b1;   /* Azul (Educa) */
       --con-salmon:#f88379;   /* Rosa salmón (Con) */
       --risas-yellow:#f9c74f; /* Amarillo (Risas) */
@@ -41,11 +40,11 @@
     .menu a:hover{background:#f2f7f8}
 
     /* HERO */
-    .hero{position:relative;color:#073b49;min-height:72vh;display:grid;place-items:center;text-align:center;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("assets/familia-fondo.png") center/cover no-repeat;z-index:-1}
+    .hero{position:relative;min-height:72vh;display:grid;place-items:center;text-align:center;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./assets/familia-fondo.png") center/cover no-repeat;z-index:-1}
     .hero-inner{max-width:980px;padding:48px 16px}
     .hero-logo{display:inline-flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:14px}
-    .hero-logo img{width:140px;height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.15))}
+    .hero-logo img{width:160px;height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.15));background:transparent}
     .hero-logo .title{font-weight:900;font-size:clamp(28px,6vw,44px)}
     .hero h2{margin:8px 0 12px;font-size:clamp(20px,3.6vw,28px);font-weight:500;color:#000}
     .tagline{font-size:clamp(18px,3.2vw,22px);font-weight:700;color:#000}
@@ -63,6 +62,7 @@
     /* SOBRE MI */
     .sobre-mi{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
     .sobre-mi .pic{width:120px;height:120px;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:var(--shadow)}
+    .sobre-mi .pic img{width:100%;height:100%;object-fit:cover}
 
     /* TE IMAGINAS (bloque azul) */
     .panel-azul{background:var(--educa-blue);color:#eaf9fb;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
@@ -107,7 +107,7 @@
     <div class="wrap">
       <div class="row">
         <a class="brand" href="#inicio" aria-label="EducaConRisas">
-          <img src="assets/logo-ecr.png" alt="Logo EducaConRisas" />
+          <img src="./assets/logo-ecr.png" alt="Logo EducaConRisas" />
           <span class="name"><span class="edu">Educa</span><span class="con">Con</span><span class="risas">Risas</span></span>
         </a>
         <div class="menu" role="navigation" aria-label="principal">
@@ -126,8 +126,9 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-logo">
-        <img src="assets/logo-ecr.png" alt="EducaConRisas" />
-        <div class="title"><span class="edu">Educa</span><span class="con">Con</span><span class="risas">Risas</span></div>
+        <!-- Logo transparente del héroe -->
+        <img src="./assets/logo_header.png" alt="EducaConRisas" />
+        <div class="title" aria-hidden="true"><span class="edu">Educa</span><span class="con">Con</span><span class="risas">Risas</span></div>
       </div>
       <h2>Orientación educativa para familias</h2>
       <p class="tagline">
@@ -143,7 +144,13 @@
   <!-- SOBRE MI -->
   <section class="section" id="sobre-mi">
     <div class="sobre-mi">
-      <div class="pic"><img src="assets/irina.png" alt="Irina García" /></div>
+      <div class="pic">
+        <picture>
+          <source srcset="./assets/irina.png" type="image/png" />
+          <source srcset="./assets/irina.jpg" type="image/jpeg" />
+          <img src="./assets/irina.png" alt="Irina García" loading="lazy" />
+        </picture>
+      </div>
       <div>
         <h2>Hola, soy Irina García</h2>
         <p>Pedagoga y <strong>psicóloga en formación</strong>. Acompaño a familias para poner <em>límites con amor</em>, crear rutinas realistas y disfrutar más de la convivencia. He creado <strong><span style="color:var(--educa-blue)">Educa</span><span style="color:var(--con-salmon)">Con</span><span style="color:var(--risas-yellow)">Risas</span></strong> como un espacio práctico y cercano para transformar la crianza del “no sabemos por dónde empezar” al “¡lo estamos consiguiendo!”.</p>
@@ -161,7 +168,6 @@
   <!-- SOL + TEMAS -->
   <section class="section sol-wrap" id="temas">
     <div class="sol" aria-hidden="true">
-      <!-- Sol SVG con texto central -->
       <svg viewBox="0 0 800 600" role="img" aria-label="¿Qué trabajaremos juntos?">
         <defs>
           <radialGradient id="g" cx="50%" cy="50%" r="50%">
@@ -169,7 +175,6 @@
             <stop offset="100%" stop-color="var(--risas-yellow)" />
           </radialGradient>
         </defs>
-        <!-- Rayos del sol -->
         <g stroke="#ffd54f" stroke-width="10" stroke-linecap="round">
           <line x1="400" y1="110" x2="400" y2="20" />
           <line x1="520" y1="140" x2="600" y2="70" />
@@ -180,14 +185,13 @@
           <line x1="210" y1="240" x2="100" y2="230" />
           <line x1="280" y1="140" x2="200" y2="70" />
         </g>
-        <!-- Círculo -->
         <circle cx="400" cy="260" r="120" fill="url(#g)" stroke="#ffca28" stroke-width="6" />
         <text x="400" y="255" text-anchor="middle" font-size="22" font-weight="800" fill="#333">¿Qué trabajaremos</text>
         <text x="400" y="285" text-anchor="middle" font-size="22" font-weight="800" fill="#333">juntos?</text>
       </svg>
     </div>
 
-    <!-- Líneas temáticas alineadas con los rayos: título en la línea y debajo la explicación -->
+    <!-- Líneas temáticas -->
     <div class="topic-lines">
       <div class="topic-line">
         <span class="topic-label">📱 Pantallas y límites</span>
