@@ -41,7 +41,7 @@
 
     /* HERO */
     .hero{position:relative;min-height:36vh;display:grid;place-items:center;text-align:center;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.35), rgba(255,255,255,.35)), url("./assets/familia-fondo.png") center/cover no-repeat;z-index:-1}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.58), rgba(255,255,255,.58)), url("./assets/familia-fondo.png") center/cover no-repeat;z-index:-1}
     .hero-inner{max-width:980px;padding:32px 16px}
     .hero-mark{width:clamp(220px,28vw,380px);height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.15));background:transparent}
     .hero-title{margin:0 0 10px;font-size:clamp(24px,4vw,34px);font-weight:500;color:#000}
@@ -67,7 +67,8 @@
     .sobre-mi .pic img{width:100%;height:100%;object-fit:cover}
 
     /* TE IMAGINAS (bloque azul) */
-    .panel-azul{background:var(--educa-blue);color:#eaf9fb;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .panel-azul{background:var(--educa-blue-light);color:#eaf9fb;border-radius:0;padding:28px 16px;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);box-shadow:none}
+    .panel-azul strong{color:#fff}
     .panel-azul strong{color:#fff}
 
     /* SOL + TEMAS */
@@ -80,6 +81,17 @@
     .topic-line::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:#ffd54f}
     .topic-label{display:inline-block;background:#fff;padding:0 10px;font-weight:800}
     .topic-desc{margin:6px 0 0;color:var(--muted)}
+
+    /* SOL + TEMAS (interactivo) */
+    .sun-wrap{max-width:1100px;margin:0 auto;padding:56px 16px}
+    .sun{position:relative;max-width:1000px;height:500px;margin:0 auto}
+    .sun svg{width:100%;height:100%}
+    .ray-label{position:absolute;transform:translate(-50%,-50%);background:#fff;border:2px solid #ffd54f;border-radius:999px;padding:8px 12px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:var(--shadow)}
+    .ray-label:hover{background:#fffdf0}
+    #popover{position:absolute;display:none;max-width:320px;background:#fffbe6;border:1px solid #ffe28a;border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);z-index:10}
+    #popover h5{margin:0 20px 6px 0;font-size:15px}
+    #popover p{margin:0;color:#444}
+    #popover .close{position:absolute;top:6px;right:8px;border:none;background:transparent;font-size:18px;cursor:pointer;color:#666}
 
     /* ACOMPANAMIENTO */
     .acomp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
@@ -169,58 +181,47 @@
     </div>
   </section>
 
-  <!-- SOL + TEMAS -->
-  <section class="section sol-wrap" id="temas">
-    <div class="sol" aria-hidden="true">
-      <svg viewBox="0 0 800 600" role="img" aria-label="¿Qué trabajaremos juntos?">
+  <!-- SOL + TEMAS (sol interactivo) -->
+  <section class="sun-wrap" id="temas">
+    <div class="sun" id="sun">
+      <svg viewBox="0 0 800 500" role="img" aria-label="¿Qué trabajaremos juntos?">
         <defs>
-          <radialGradient id="g" cx="50%" cy="50%" r="50%">
+          <radialGradient id="g2" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stop-color="#fff176" />
             <stop offset="100%" stop-color="var(--risas-yellow)" />
           </radialGradient>
         </defs>
-        <g stroke="#ffd54f" stroke-width="10" stroke-linecap="round">
-          <line x1="400" y1="110" x2="400" y2="20" />
-          <line x1="520" y1="140" x2="600" y2="70" />
-          <line x1="590" y1="240" x2="700" y2="230" />
-          <line x1="520" y1="360" x2="610" y2="430" />
-          <line x1="400" y1="400" x2="400" y2="520" />
-          <line x1="280" y1="360" x2="190" y2="430" />
-          <line x1="210" y1="240" x2="100" y2="230" />
-          <line x1="280" y1="140" x2="200" y2="70" />
+        <!-- Rayos con quiebro al final -->
+        <g stroke="#ffd54f" stroke-width="10" stroke-linecap="round" fill="none">
+          <!-- izquierda arriba -->
+          <polyline points="330,180 240,130 160,130" />
+          <!-- izquierda media -->
+          <polyline points="330,250 200,230 90,230" />
+          <!-- izquierda abajo -->
+          <polyline points="340,330 260,370 180,420" />
+          <!-- derecha arriba -->
+          <polyline points="470,180 540,130 640,120" />
+          <!-- derecha media -->
+          <polyline points="470,250 600,260 720,260" />
+          <!-- derecha abajo -->
+          <polyline points="460,330 540,380 650,420" />
         </g>
-        <circle cx="400" cy="260" r="120" fill="url(#g)" stroke="#ffca28" stroke-width="6" />
-        <text x="400" y="255" text-anchor="middle" font-size="22" font-weight="800" fill="#333">¿Qué trabajaremos</text>
-        <text x="400" y="285" text-anchor="middle" font-size="22" font-weight="800" fill="#333">juntos?</text>
+        <!-- Sol -->
+        <circle cx="400" cy="250" r="110" fill="url(#g2)" stroke="#ffca28" stroke-width="6" />
+        <text x="400" y="243" text-anchor="middle" font-size="22" font-weight="800" fill="#333">¿Qué trabajaremos</text>
+        <text x="400" y="273" text-anchor="middle" font-size="22" font-weight="800" fill="#333">juntos?</text>
       </svg>
-    </div>
 
-    <!-- Líneas temáticas -->
-    <div class="topic-lines">
-      <div class="topic-line">
-        <span class="topic-label">📱 Pantallas y límites</span>
-        <p class="topic-desc">Contrato familiar, tiempos saludables y alternativas sin peleas.</p>
-      </div>
-      <div class="topic-line">
-        <span class="topic-label">📚 Hábitos de estudio</span>
-        <p class="topic-desc">Rutinas realistas, calendario visual y técnicas de repaso activo.</p>
-      </div>
-      <div class="topic-line">
-        <span class="topic-label">😊 Convivencia y emociones</span>
-        <p class="topic-desc">Normas claras, refuerzo positivo y acuerdos sin gritos.</p>
-      </div>
-      <div class="topic-line">
-        <span class="topic-label">🧠 TDAH en casa</span>
-        <p class="topic-desc">Organización, timers, checklist y coordinación con el centro.</p>
-      </div>
-      <div class="topic-line">
-        <span class="topic-label">🌧️ Rabietas y desescalada</span>
-        <p class="topic-desc">Estrategias de calma y comunicación por edades.</p>
-      </div>
-      <div class="topic-line">
-        <span class="topic-label">👨‍👩‍👧‍👦 Reunión familiar</span>
-        <p class="topic-desc">Agenda semanal, acuerdos y celebraciones para crecer juntos.</p>
-      </div>
+      <!-- Etiquetas en los extremos de los rayos -->
+      <button class="ray-label" style="left:16.9%; top:24.4%" data-title="Pantallas y límites" data-content="Contrato familiar, tiempos saludables y alternativas sin peleas.">📱 Pantallas y límites</button>
+      <button class="ray-label" style="left:8.75%; top:44.4%" data-title="Hábitos de estudio" data-content="Rutinas realistas, calendario visual y técnicas de repaso activo.">📚 Hábitos de estudio</button>
+      <button class="ray-label" style="left:20%; top:84%" data-title="Convivencia y emociones" data-content="Normas claras, refuerzos positivos y acuerdos sin gritos.">😊 Convivencia y emociones</button>
+      <button class="ray-label" style="left:82.5%; top:22.4%" data-title="TDAH en casa" data-content="Organización, timers, checklist y coordinación con el centro.">🧠 TDAH en casa</button>
+      <button class="ray-label" style="left:92.5%; top:50.4%" data-title="Rabietas y desescalada" data-content="Estrategias de calma y comunicación por edades.">🌧️ Rabietas y desescalada</button>
+      <button class="ray-label" style="left:83.75%; top:82.4%" data-title="Reunión familiar" data-content="Agenda semanal, acuerdos y celebraciones para crecer juntos.">👨‍👩‍👧‍👦 Reunión familiar</button>
+
+      <!-- Popover -->
+      <div id="popover" role="dialog" aria-modal="false" aria-live="polite"></div>
     </div>
   </section>
 
@@ -269,10 +270,7 @@
   </section>
 
   <footer>
-    © <script>document.write(new Date().getFullYear())</script> Educa<span style="color:var(--con-salmon)">Con</span>Risas · Orientación educativa para familias
-  </footer>
-
-  <script>
+    © <script>
     // Resaltar el enlace del menú según el scroll
     const links=[...document.querySelectorAll('.menu a')];
     const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
@@ -281,6 +279,31 @@
       links.forEach(a=>a.style.fontWeight='500'); if(cur) cur.style.fontWeight='800';
     }
     document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    // Popover para el Sol interactivo
+    (function(){
+      const container=document.getElementById('sun');
+      if(!container) return;
+      const pop=document.getElementById('popover');
+      const labels=[...container.querySelectorAll('.ray-label')];
+      function hide(){pop.style.display='none';}
+      function showFor(btn){
+        const rect=container.getBoundingClientRect();
+        const b=btn.getBoundingClientRect();
+        pop.innerHTML=`<button class="close" aria-label="Cerrar">×</button><h5>${btn.dataset.title}</h5><p>${btn.dataset.content}</p>`;
+        pop.style.left=(b.left-rect.left+ b.width/2)+"px";
+        pop.style.top=(b.top-rect.top + b.height + 12)+"px"; 
+        pop.style.display='block';
+        pop.querySelector('.close').addEventListener('click',hide);
+      }
+      labels.forEach(btn=>{
+        btn.addEventListener('click',e=>{e.stopPropagation();showFor(btn);});
+        btn.addEventListener('keydown',e=>{if(e.key==='Enter' || e.key===' '){e.preventDefault();showFor(btn);}});
+      });
+      document.addEventListener('click',e=>{ if(!pop.contains(e.target)) hide();});
+      document.addEventListener('keydown',e=>{ if(e.key==='Escape') hide();});
+    })();
   </script>
 </body>
+</html>
 </html>
