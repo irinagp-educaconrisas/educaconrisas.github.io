@@ -11,6 +11,7 @@
       --educa-blue:#2da6b1;   /* Azul (Educa) */
       --con-salmon:#f88379;   /* Rosa salmón (Con) */
       --risas-yellow:#f9c74f; /* Amarillo (Risas) */
+      --educa-blue-light:#6ec9d1; /* Azul claro mismo tono */
       --ink:#101518;
       --muted:#5b6a7a;
       --bg:#ffffff;
@@ -41,20 +42,20 @@
 
     /* HERO */
     .hero{position:relative;min-height:72vh;display:grid;place-items:center;text-align:center;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("./assets/familia-fondo.png") center/cover no-repeat;z-index:-1}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.45), rgba(255,255,255,.45)), url("./assets/familia-fondo.png") center/cover no-repeat;z-index:-1}
     .hero-inner{max-width:980px;padding:48px 16px}
     .hero-logo{display:inline-flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:14px}
-    .hero-logo img{width:160px;height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.15));background:transparent}
-    .hero-logo .title{font-weight:900;font-size:clamp(28px,6vw,44px)}
-    .hero h2{margin:8px 0 12px;font-size:clamp(20px,3.6vw,28px);font-weight:500;color:#000}
-    .tagline{font-size:clamp(18px,3.2vw,22px);font-weight:700;color:#000}
+    .hero-logo img{width:clamp(140px,22vw,240px);height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.15));background:transparent}
+    .hero-logo .title{display:none}
+    .hero-title{margin:8px 0 12px;font-size:clamp(24px,4vw,34px);font-weight:500;color:#000}
+    .tagline{font-size:clamp(18px,3.2vw,22px);font-weight:600;color:#000}
     .tagline .limites{color:var(--educa-blue)}
     .tagline .amor{color:var(--con-salmon)}
     .tagline .divertidas{color:var(--risas-yellow)}
     .cta{margin-top:18px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800}
-    .btn.primary{background:var(--educa-blue);color:#fff}
-    .btn.ghost{border:2px solid var(--educa-blue);color:var(--educa-blue)}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:500}
+    .btn.primary{background:var(--educa-blue-light);color:#000;border:2px solid var(--educa-blue)}
+    .btn.ghost{border:2px solid var(--educa-blue-light);color:#000;background:transparent}
 
     /* SECCIONES BASE */
     .section{max-width:1100px;margin:0 auto;padding:56px 16px}
@@ -126,11 +127,11 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-logo">
-        <!-- Logo transparente del héroe -->
-        <img src="./assets/logo_header.png" alt="EducaConRisas" />
-        <div class="title" aria-hidden="true"><span class="edu">Educa</span><span class="con">Con</span><span class="risas">Risas</span></div>
+        <!-- Logo transparente del héroe (SIN texto debajo) -->
+        <img src="./assets/logo_header.png" alt="EducaConRisas – logo" />
+        <div class="title" aria-hidden="true"></div>
       </div>
-      <h2>Orientación educativa para familias</h2>
+      <h1 class="hero-title">Orientación educativa para familias</h1>
       <p class="tagline">
         <span class="limites">Límites</span> con <span class="amor">amor</span> para que las crianzas sean más fáciles y <span class="divertidas">divertidas</span>.
       </p>
