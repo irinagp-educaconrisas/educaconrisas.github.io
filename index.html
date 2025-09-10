@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EducaConRisas – Orientación educativa para familias</title>
   <meta name="description" content="Orientación educativa cercana y práctica: límites con amor, hábitos de estudio, convivencia, TDAH en casa, rabietas y reuniones familiares. Primera sesión gratis." />
-  <link rel="preload" as="image" href="assets/familia-fondo.jpg" />
+  <link rel="preload" as="image" href="assets/familia-fondo.png" />
   <style>
     :root{
       /* Colores del logo */
       --educa-blue:#2da6b1;   /* Azul (Educa) */
       --con-salmon:#f88379;   /* Rosa salmón (Con) */
       --risas-yellow:#f9c74f; /* Amarillo (Risas) */
-      --ink:#23303f;
+      --ink:#101518;
       --muted:#5b6a7a;
       --bg:#ffffff;
       --card:#f6fafb;
@@ -31,27 +31,27 @@
     .wrap{max-width:1100px;margin:0 auto;padding:10px 16px}
     .nav .row{display:flex;align-items:center;gap:14px}
     .brand{display:flex;align-items:center;gap:10px}
-    .brand img{width:40px;height:auto}
-    .name{font-weight:900;letter-spacing:.2px;font-size:18px}
+    .brand img{width:42px;height:auto;display:block}
+    .name{font-weight:700;letter-spacing:.2px;font-size:18px;color:#000}
     .name .edu{color:var(--educa-blue)}
     .name .con{color:var(--con-salmon)}
     .name .risas{color:var(--risas-yellow)}
     .menu{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
-    .menu a{padding:8px 10px;border-radius:10px;color:#344;opacity:.95}
+    .menu a{padding:8px 10px;border-radius:10px;color:#000;font-weight:500}
     .menu a:hover{background:#f2f7f8}
 
     /* HERO */
     .hero{position:relative;color:#073b49;min-height:72vh;display:grid;place-items:center;text-align:center;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("assets/familia-fondo.jpg") center/cover no-repeat;z-index:-1}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url("assets/familia-fondo.png") center/cover no-repeat;z-index:-1}
     .hero-inner{max-width:980px;padding:48px 16px}
     .hero-logo{display:inline-flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:14px}
     .hero-logo img{width:140px;height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.15))}
     .hero-logo .title{font-weight:900;font-size:clamp(28px,6vw,44px)}
-    .hero h2{margin:8px 0 12px;font-size:clamp(20px,3.6vw,28px);font-weight:800}
-    .tagline{font-size:clamp(18px,3.2vw,22px);font-weight:800}
-    .tagline .limites{color:#fff;background:var(--educa-blue);padding:3px 10px;border-radius:10px}
-    .tagline .amor{color:#fff;background:var(--con-salmon);padding:3px 10px;border-radius:10px}
-    .tagline .divertidas{color:#000;background:var(--risas-yellow);padding:3px 10px;border-radius:10px}
+    .hero h2{margin:8px 0 12px;font-size:clamp(20px,3.6vw,28px);font-weight:500;color:#000}
+    .tagline{font-size:clamp(18px,3.2vw,22px);font-weight:700;color:#000}
+    .tagline .limites{color:var(--educa-blue)}
+    .tagline .amor{color:var(--con-salmon)}
+    .tagline .divertidas{color:var(--risas-yellow)}
     .cta{margin-top:18px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800}
     .btn.primary{background:var(--educa-blue);color:#fff}
@@ -72,10 +72,12 @@
     .sol-wrap{display:grid;gap:22px}
     .sol{display:grid;place-items:center}
     .sol svg{max-width:700px;width:100%}
-    .temas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .card{background:var(--card);border-radius:var(--radius);padding:16px;border:1px solid #e6edf5}
-    .card h4{margin:0 0 6px}
-    .card p{margin:0;color:var(--muted)}
+
+    .topic-lines{margin-top:10px;display:grid;gap:18px}
+    .topic-line{position:relative;padding-top:16px}
+    .topic-line::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:#ffd54f}
+    .topic-label{display:inline-block;background:#fff;padding:0 10px;font-weight:800}
+    .topic-desc{margin:6px 0 0;color:var(--muted)}
 
     /* ACOMPANAMIENTO */
     .acomp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
@@ -141,7 +143,7 @@
   <!-- SOBRE MI -->
   <section class="section" id="sobre-mi">
     <div class="sobre-mi">
-      <div class="pic"><img src="assets/irina.jpg" alt="Irina García" /></div>
+      <div class="pic"><img src="assets/irina.png" alt="Irina García" /></div>
       <div>
         <h2>Hola, soy Irina García</h2>
         <p>Pedagoga y <strong>psicóloga en formación</strong>. Acompaño a familias para poner <em>límites con amor</em>, crear rutinas realistas y disfrutar más de la convivencia. He creado <strong><span style="color:var(--educa-blue)">Educa</span><span style="color:var(--con-salmon)">Con</span><span style="color:var(--risas-yellow)">Risas</span></strong> como un espacio práctico y cercano para transformar la crianza del “no sabemos por dónde empezar” al “¡lo estamos consiguiendo!”.</p>
@@ -149,7 +151,7 @@
     </div>
   </section>
 
-  <!-- TE IMAGINAS -->
+  <!-- TE IMAGINAS (bloque azul) -->
   <section class="section" id="te-imaginas">
     <div class="panel-azul">
       <p><strong>¿Te imaginas</strong> que la gran tarea de ser padre y madre se llegue a convertir en un disfrute? <strong>EducaConRisas</strong> se ha creado como recurso para contribuir a calmar la angustia que puede generar la crianza y ofrecer <strong>herramientas concretas</strong>, acuerdos familiares y seguimiento para que no os sintáis solos en el proceso.</p>
@@ -159,6 +161,7 @@
   <!-- SOL + TEMAS -->
   <section class="section sol-wrap" id="temas">
     <div class="sol" aria-hidden="true">
+      <!-- Sol SVG con texto central -->
       <svg viewBox="0 0 800 600" role="img" aria-label="¿Qué trabajaremos juntos?">
         <defs>
           <radialGradient id="g" cx="50%" cy="50%" r="50%">
@@ -166,6 +169,7 @@
             <stop offset="100%" stop-color="var(--risas-yellow)" />
           </radialGradient>
         </defs>
+        <!-- Rayos del sol -->
         <g stroke="#ffd54f" stroke-width="10" stroke-linecap="round">
           <line x1="400" y1="110" x2="400" y2="20" />
           <line x1="520" y1="140" x2="600" y2="70" />
@@ -176,36 +180,38 @@
           <line x1="210" y1="240" x2="100" y2="230" />
           <line x1="280" y1="140" x2="200" y2="70" />
         </g>
+        <!-- Círculo -->
         <circle cx="400" cy="260" r="120" fill="url(#g)" stroke="#ffca28" stroke-width="6" />
         <text x="400" y="255" text-anchor="middle" font-size="22" font-weight="800" fill="#333">¿Qué trabajaremos</text>
         <text x="400" y="285" text-anchor="middle" font-size="22" font-weight="800" fill="#333">juntos?</text>
       </svg>
     </div>
 
-    <div class="temas">
-      <div class="card">
-        <h4>📱 Pantallas y límites</h4>
-        <p>Contrato familiar, tiempos saludables y alternativas sin peleas.</p>
+    <!-- Líneas temáticas alineadas con los rayos: título en la línea y debajo la explicación -->
+    <div class="topic-lines">
+      <div class="topic-line">
+        <span class="topic-label">📱 Pantallas y límites</span>
+        <p class="topic-desc">Contrato familiar, tiempos saludables y alternativas sin peleas.</p>
       </div>
-      <div class="card">
-        <h4>📚 Hábitos de estudio</h4>
-        <p>Rutinas realistas, calendario visual y repaso activo.</p>
+      <div class="topic-line">
+        <span class="topic-label">📚 Hábitos de estudio</span>
+        <p class="topic-desc">Rutinas realistas, calendario visual y técnicas de repaso activo.</p>
       </div>
-      <div class="card">
-        <h4>😊 Convivencia y emociones</h4>
-        <p>Normas claras, refuerzo positivo y acuerdos sin gritos.</p>
+      <div class="topic-line">
+        <span class="topic-label">😊 Convivencia y emociones</span>
+        <p class="topic-desc">Normas claras, refuerzo positivo y acuerdos sin gritos.</p>
       </div>
-      <div class="card">
-        <h4>🧠 TDAH en casa</h4>
-        <p>Organización, timers, checklist y coordinación con el centro.</p>
+      <div class="topic-line">
+        <span class="topic-label">🧠 TDAH en casa</span>
+        <p class="topic-desc">Organización, timers, checklist y coordinación con el centro.</p>
       </div>
-      <div class="card">
-        <h4>🌧️ Rabietas y desescalada</h4>
-        <p>Estrategias de calma y comunicación por edades.</p>
+      <div class="topic-line">
+        <span class="topic-label">🌧️ Rabietas y desescalada</span>
+        <p class="topic-desc">Estrategias de calma y comunicación por edades.</p>
       </div>
-      <div class="card">
-        <h4>👨‍👩‍👧‍👦 Reunión familiar</h4>
-        <p>Agenda semanal, acuerdos y celebraciones para crecer juntos.</p>
+      <div class="topic-line">
+        <span class="topic-label">👨‍👩‍👧‍👦 Reunión familiar</span>
+        <p class="topic-desc">Agenda semanal, acuerdos y celebraciones para crecer juntos.</p>
       </div>
     </div>
   </section>
@@ -248,4 +254,25 @@
     <h2>Contacto</h2>
     <p>¿Hablamos? Reserva tu primera sesión gratuita o escríbeme directamente:</p>
     <div class="list">
-      <a class="chip" href="https://wa.me/34620716794" target="_blank" rel="noopener">
+      <a class="chip" href="https://wa.me/34620716794" target="_blank" rel="noopener">💬 <b>WhatsApp</b> · +34 620 716 794</a>
+      <a class="chip" href="https://instagram.com/educaconrisas" target="_blank" rel="noopener">📷 <b>Instagram</b> · @educaconrisas</a>
+      <a class="chip" href="mailto:educaconrisas@gmail.com">✉️ <b>Email</b> · educaconrisas@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Educa<span style="color:var(--con-salmon)">Con</span>Risas · Orientación educativa para familias
+  </footer>
+
+  <script>
+    // Resaltar el enlace del menú según el scroll
+    const links=[...document.querySelectorAll('.menu a')];
+    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    function onScroll(){
+      let i=sections.findIndex(s=>s.getBoundingClientRect().top>80); if(i===-1) i=sections.length; const cur=links[Math.max(0,i-1)];
+      links.forEach(a=>a.style.fontWeight='500'); if(cur) cur.style.fontWeight='800';
+    }
+    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  </script>
+</body>
+</html>
