@@ -66,17 +66,19 @@
     .sobre-mi .pic{width:120px;height:120px;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:var(--shadow)}
     .sobre-mi .pic img{width:100%;height:100%;object-fit:cover}
 
-   <!-- TE IMAGINAS (banda azul claro full-width, texto negro) -->
-<section id="te-imaginas" class="band-blue">
-  <div class="inner">
-    <p>
-      <strong>¿Te imaginas</strong> que la gran tarea de ser padre y madre se llegue a convertir en un disfrute?
-      <strong>EducaConRisas</strong> se ha creado como recurso para contribuir a calmar la angustia que puede generar la crianza
-      y ofrecer <strong>herramientas concretas</strong>, acuerdos familiares y seguimiento para que no os sintáis
-      solos en el proceso.
-    </p>
-  </div>
-</section>
+    /* TE IMAGINAS – fondo azul claro (base Educa) y texto negro */
+    #te-imaginas .panel-azul{
+      /* fallback aproximado si no hay color-mix */
+      background:#d7eef1;
+      /* preferente: mezcla para aclarar el azul base */
+      background: color-mix(in srgb, var(--educa-blue) 18%, white);
+      color:#000;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    #te-imaginas .panel-azul p,
+    #te-imaginas .panel-azul strong{ color:#000; }
 
     /* SOL + TEMAS */
     .sol-wrap{display:grid;gap:22px}
@@ -181,7 +183,7 @@
     </div>
   </section>
 
-  <!-- TE IMAGINAS (bloque azul) -->
+  <!-- TE IMAGINAS (bloque azul claro y letras negras) -->
   <section class="section" id="te-imaginas">
     <div class="panel-azul">
       <p><strong>¿Te imaginas</strong> que la gran tarea de ser padre y madre se llegue a convertir en un disfrute? <strong>EducaConRisas</strong> se ha creado como recurso para contribuir a calmar la angustia que puede generar la crianza y ofrecer <strong>herramientas concretas</strong>, acuerdos familiares y seguimiento para que no os sintáis solos en el proceso.</p>
@@ -275,62 +277,5 @@
   <section class="section" id="porque-ecr">
     <div class="porque">
       <h2>¿Por qué <span class="edu">E</span><span class="con">C</span><span class="risas">R</span>?</h2>
-      <p>Porque la crianza no debería vivirse en soledad. En <strong>EducaConRisas</strong> acompañamos con una mirada pedagógica y afectiva para que cada familia encuentre su propio equilibrio entre límites y cariño.</p>
-      <p>Como <strong>pedagoga</strong> y <strong>psicóloga en formación</strong>, Irina integra herramientas prácticas (contratos de pantallas, rutinas visuales, técnicas de estudio, desescalada por edades) con un estilo cercano y claro. Transformamos “todo son peleas” en “tenemos acuerdos que funcionan”.</p>
-      <ul>
-        <li>Metodología sencilla y accionable, centrada en objetivos.</li>
-        <li>Materiales listos para usar (checklists, calendarios, guías).</li>
-        <li>Seguimiento realista para consolidar hábitos.</li>
-      </ul>
-    </div>
-  </section>
+      <p>Porque la crianza no debería vivirse en sol
 
-  <!-- CONTACTO -->
-  <section class="section contacto" id="contacto">
-    <h2>Contacto</h2>
-    <p>¿Hablamos? Reserva tu primera sesión gratuita o escríbeme directamente:</p>
-    <div class="list">
-      <a class="chip" href="https://wa.me/34620716794" target="_blank" rel="noopener">💬 <b>WhatsApp</b> · +34 620 716 794</a>
-      <a class="chip" href="https://instagram.com/educaconrisas" target="_blank" rel="noopener">📷 <b>Instagram</b> · @educaconrisas</a>
-      <a class="chip" href="mailto:educaconrisas@gmail.com">✉️ <b>Email</b> · educaconrisas@gmail.com</a>
-    </div>
-  </section>
-
-  <footer>
-    © <script>
-    // Resaltar el enlace del menú según el scroll
-    const links=[...document.querySelectorAll('.menu a')];
-    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    function onScroll(){
-      let i=sections.findIndex(s=>s.getBoundingClientRect().top>80); if(i===-1) i=sections.length; const cur=links[Math.max(0,i-1)];
-      links.forEach(a=>a.style.fontWeight='500'); if(cur) cur.style.fontWeight='800';
-    }
-    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-
-    // Popover para el Sol interactivo
-    (function(){
-      const container=document.getElementById('sun');
-      if(!container) return;
-      const pop=document.getElementById('popover');
-      const labels=[...container.querySelectorAll('.ray-label')];
-      function hide(){pop.style.display='none';}
-      function showFor(btn){
-        const rect=container.getBoundingClientRect();
-        const b=btn.getBoundingClientRect();
-        pop.innerHTML=`<button class="close" aria-label="Cerrar">×</button><h5>${btn.dataset.title}</h5><p>${btn.dataset.content}</p>`;
-        pop.style.left=(b.left-rect.left+ b.width/2)+"px";
-        pop.style.top=(b.top-rect.top + b.height + 12)+"px"; 
-        pop.style.display='block';
-        pop.querySelector('.close').addEventListener('click',hide);
-      }
-      labels.forEach(btn=>{
-        btn.addEventListener('click',e=>{e.stopPropagation();showFor(btn);});
-        btn.addEventListener('keydown',e=>{if(e.key==='Enter' || e.key===' '){e.preventDefault();showFor(btn);}});
-      });
-      document.addEventListener('click',e=>{ if(!pop.contains(e.target)) hide();});
-      document.addEventListener('keydown',e=>{ if(e.key==='Escape') hide();});
-    })();
-  </script>
-</body>
-</html>
-</html>
