@@ -68,9 +68,7 @@
 
     /* TE IMAGINAS – fondo azul claro (base Educa) y texto negro */
     #te-imaginas .panel-azul{
-      /* fallback aproximado si no hay color-mix */
-      background:#d7eef1;
-      /* preferente: mezcla para aclarar el azul base */
+      background:#d7eef1; /* fallback */
       background: color-mix(in srgb, var(--educa-blue) 18%, white);
       color:#000;
       border-radius: var(--radius);
@@ -80,27 +78,86 @@
     #te-imaginas .panel-azul p,
     #te-imaginas .panel-azul strong{ color:#000; }
 
-    /* SOL + TEMAS */
-    .sol-wrap{display:grid;gap:22px}
-    .sol{display:grid;place-items:center}
-    .sol svg{max-width:700px;width:100%}
+    /* FLIP CARDS – ¿Qué trabajaremos juntos? */
+    .flip-wrap{max-width:1100px;margin:0 auto;padding:16px}
+    .flip-header{margin:0 0 18px;text-align:center;font-size:clamp(22px,3.4vw,28px)}
+    .flip-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+    }
+    .flip-card{
+      perspective:1000px;
+      border-radius:var(--radius);
+      position:relative;
+      min-height:160px;
+      animation:float-in .5s ease both;
+    }
+    .flip-inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      transform-style:preserve-3d;
+      transition:transform .6s cubic-bezier(.2,.8,.2,1);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    /* Estado volteado por hover (desktop) */
+    @media (hover:hover){
+      .flip-card:hover .flip-inner{ transform:rotateY(180deg); }
+    }
+    /* Estado volteado por atributo (móvil / accesible) */
+    .flip-card[aria-pressed="true"] .flip-inner,
+    .flip-card[data-flipped="true"] .flip-inner{
+      transform:rotateY(180deg);
+    }
 
-    .topic-lines{margin-top:10px;display:grid;gap:18px}
-    .topic-line{position:relative;padding-top:16px}
-    .topic-line::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:#ffd54f}
-    .topic-label{display:inline-block;background:#fff;padding:0 10px;font-weight:800}
-    .topic-desc{margin:6px 0 0;color:var(--muted)}
+    .flip-face{
+      position:absolute; inset:0;
+      border-radius:var(--radius);
+      backface-visibility:hidden;
+      display:grid; place-items:center;
+      padding:18px;
+    }
+    .flip-front{
+      background:#fff;
+      border:1px solid #e6edf5;
+    }
+    .flip-front .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; font-size:18px; text-align:center;
+    }
+    .flip-front .title .icon{
+      font-size:22px; line-height:1;
+    }
 
-    /* SOL + TEMAS (interactivo) */
-    .sun-wrap{max-width:1100px;margin:0 auto;padding:56px 16px}
-    .sun{position:relative;max-width:1000px;height:500px;margin:0 auto}
-    .sun svg{width:100%;height:100%}
-    .ray-label{position:absolute;transform:translate(-50%,-50%);background:#fff;border:2px solid #ffd54f;border-radius:999px;padding:8px 12px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:var(--shadow)}
-    .ray-label:hover{background:#fffdf0}
-    #popover{position:absolute;display:none;max-width:320px;background:#fffbe6;border:1px solid #ffe28a;border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);z-index:10}
-    #popover h5{margin:0 20px 6px 0;font-size:15px}
-    #popover p{margin:0;color:#444}
-    #popover .close{position:absolute;top:6px;right:8px;border:none;background:transparent;font-size:18px;cursor:pointer;color:#666}
+    .flip-back{
+      transform:rotateY(180deg);
+      background:#fffbe6;
+      border:1px solid #ffe28a;
+      color:#333;
+    }
+    .flip-back p{margin:0; text-align:center}
+
+    /* Micro-interacciones */
+    .flip-card:focus-within .flip-inner{ box-shadow:0 10px 34px rgba(0,0,0,.12); }
+    .flip-btn{
+      position:absolute; inset:0;
+      border:none; background:transparent; cursor:pointer;
+      border-radius:var(--radius);
+      /* Accesibilidad */
+      color:transparent;
+    }
+    .flip-btn:focus-visible{
+      outline:3px solid var(--educa-blue);
+      outline-offset:4px;
+    }
+
+    /* Entrada suave */
+    @keyframes float-in{
+      from{opacity:0; transform:translateY(8px)}
+      to{opacity:1; transform:translateY(0)}
+    }
 
     /* ACOMPANAMIENTO */
     .acomp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
@@ -190,67 +247,89 @@
     </div>
   </section>
 
-  <!-- SOL + TEMAS (sol interactivo) -->
-  <section class="sun-wrap" id="temas">
-    <div class="sun" id="sun">
-      <svg viewBox="0 0 800 500" role="img" aria-label="¿Qué trabajaremos juntos?" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <radialGradient id="g2" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#fff8a6" />
-            <stop offset="100%" stop-color="var(--risas-yellow)" />
-          </radialGradient>
-          <!-- Rayo corto reusable -->
-          <line id="sray" x1="400" y1="250" x2="400" y2="195" stroke="#ffe58f" stroke-width="8" stroke-linecap="round" />
-        </defs>
+  <!-- ¿QUÉ TRABAJAREMOS JUNTOS? – Flip Cards -->
+  <section class="section" id="temas" aria-labelledby="temas-title">
+    <div class="flip-wrap">
+      <h2 class="flip-header" id="temas-title">¿Qué trabajaremos juntos?</h2>
+      <div class="flip-grid" role="list">
+        <!-- Pantallas y límites -->
+        <div class="flip-card" role="listitem" aria-pressed="false">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="title"><span class="icon">📱</span>Pantallas y límites</div>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Contrato familiar, tiempos saludables y <strong>alternativas sin peleas</strong>.</p>
+            </div>
+          </div>
+          <button class="flip-btn" aria-label="Ver detalles de Pantallas y límites"></button>
+        </div>
 
-        <!-- Corona de rayos cortos (12) -->
-        <g>
-          <use xlink:href="#sray" />
-          <use xlink:href="#sray" transform="rotate(30 400 250)" />
-          <use xlink:href="#sray" transform="rotate(60 400 250)" />
-          <use xlink:href="#sray" transform="rotate(90 400 250)" />
-          <use xlink:href="#sray" transform="rotate(120 400 250)" />
-          <use xlink:href="#sray" transform="rotate(150 400 250)" />
-          <use xlink:href="#sray" transform="rotate(180 400 250)" />
-          <use xlink:href="#sray" transform="rotate(210 400 250)" />
-          <use xlink:href="#sray" transform="rotate(240 400 250)" />
-          <use xlink:href="#sray" transform="rotate(270 400 250)" />
-          <use xlink:href="#sray" transform="rotate(300 400 250)" />
-          <use xlink:href="#sray" transform="rotate(330 400 250)" />
-        </g>
+        <!-- Hábitos de estudio -->
+        <div class="flip-card" role="listitem" aria-pressed="false">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="title"><span class="icon">📚</span>Hábitos de estudio</div>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Rutinas realistas, calendario visual y <strong>repaso activo</strong>.</p>
+            </div>
+          </div>
+          <button class="flip-btn" aria-label="Ver detalles de Hábitos de estudio"></button>
+        </div>
 
-        <!-- Rayos largos con quiebro al final -->
-        <g stroke="#ffd54f" stroke-width="10" stroke-linecap="round" fill="none">
-          <!-- izquierda arriba -->
-          <polyline points="330,180 240,130 160,130" />
-          <!-- izquierda media -->
-          <polyline points="330,250 200,230 90,230" />
-          <!-- izquierda abajo -->
-          <polyline points="340,330 260,370 180,420" />
-          <!-- derecha arriba -->
-          <polyline points="470,180 540,130 640,120" />
-          <!-- derecha media -->
-          <polyline points="470,250 600,260 720,260" />
-          <!-- derecha abajo -->
-          <polyline points="460,330 540,380 650,420" />
-        </g>
-        
-        <!-- Sol -->
-        <circle cx="400" cy="250" r="110" fill="url(#g2)" stroke="#ffca28" stroke-width="6" />
-        <text class="sun-title" x="400" y="242" text-anchor="middle" font-size="23" font-weight="600" fill="#333">¿Qué trabajaremos</text>
-        <text class="sun-title" x="400" y="272" text-anchor="middle" font-size="23" font-weight="600" fill="#333">juntos?</text>
-      </svg>
+        <!-- Convivencia y emociones -->
+        <div class="flip-card" role="listitem" aria-pressed="false">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="title"><span class="icon">😊</span>Convivencia y emociones</div>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Normas claras, refuerzos positivos y <strong>acuerdos sin gritos</strong>.</p>
+            </div>
+          </div>
+          <button class="flip-btn" aria-label="Ver detalles de Convivencia y emociones"></button>
+        </div>
 
-      <!-- Etiquetas en los extremos de los rayos -->
-      <button class="ray-label" style="left:16.9%; top:24.4%" data-title="Pantallas y límites" data-content="Contrato familiar, tiempos saludables y alternativas sin peleas.">📱 Pantallas y límites</button>
-      <button class="ray-label" style="left:8.75%; top:44.4%" data-title="Hábitos de estudio" data-content="Rutinas realistas, calendario visual y técnicas de repaso activo.">📚 Hábitos de estudio</button>
-      <button class="ray-label" style="left:20%; top:84%" data-title="Convivencia y emociones" data-content="Normas claras, refuerzos positivos y acuerdos sin gritos.">😊 Convivencia y emociones</button>
-      <button class="ray-label" style="left:82.5%; top:22.4%" data-title="TDAH en casa" data-content="Organización, timers, checklist y coordinación con el centro.">🧠 TDAH en casa</button>
-      <button class="ray-label" style="left:92.5%; top:50.4%" data-title="Rabietas y desescalada" data-content="Estrategias de calma y comunicación por edades.">🌧️ Rabietas y desescalada</button>
-      <button class="ray-label" style="left:83.75%; top:82.4%" data-title="Reunión familiar" data-content="Agenda semanal, acuerdos y celebraciones para crecer juntos.">👨‍👩‍👧‍👦 Reunión familiar</button>
+        <!-- TDAH en casa -->
+        <div class="flip-card" role="listitem" aria-pressed="false">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="title"><span class="icon">🧠</span>TDAH en casa</div>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Organización, timers, checklist y <strong>coordinación con el centro</strong>.</p>
+            </div>
+          </div>
+          <button class="flip-btn" aria-label="Ver detalles de TDAH en casa"></button>
+        </div>
 
-      <!-- Popover -->
-      <div id="popover" role="dialog" aria-modal="false" aria-live="polite"></div>
+        <!-- Rabietas y desescalada -->
+        <div class="flip-card" role="listitem" aria-pressed="false">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="title"><span class="icon">🌧️</span>Rabietas y desescalada</div>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Estrategias de calma y <strong>comunicación por edades</strong>.</p>
+            </div>
+          </div>
+          <button class="flip-btn" aria-label="Ver detalles de Rabietas y desescalada"></button>
+        </div>
+
+        <!-- Reunión familiar -->
+        <div class="flip-card" role="listitem" aria-pressed="false">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="title"><span class="icon">👨‍👩‍👧‍👦</span>Reunión familiar</div>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Agenda semanal, acuerdos y <strong>celebraciones para crecer</strong>.</p>
+            </div>
+          </div>
+          <button class="flip-btn" aria-label="Ver detalles de Reunión familiar"></button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -277,5 +356,6 @@
   <section class="section" id="porque-ecr">
     <div class="porque">
       <h2>¿Por qué <span class="edu">E</span><span class="con">C</span><span class="risas">R</span>?</h2>
-      <p>Porque la crianza no debería vivirse en sol
+      <p>Porque la crianza no debería vivirse en soledad. En <strong>EducaConRisas</strong> acompañamos con una mirada pedagógica y afectiva para que cada familia encuentre su propio equilibrio entre límites y cariño.</p>
+      <p>Como <strong>pedagoga</strong> y <strong>psicóloga en formación</strong>, Irina integra herramientas prácticas (contratos de pantallas, rutinas visuales, técnicas de estudio, desescalada por edades) con un estilo cercano y claro. Transformamos “t
 
