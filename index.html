@@ -83,14 +83,14 @@
     .flip-header{margin:0 0 18px;text-align:center;font-size:clamp(22px,3.4vw,28px)}
     .flip-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
     }
     .flip-card{
       perspective:1000px;
       border-radius:var(--radius);
       position:relative;
-      min-height:160px;
+      min-height:280px; /* más alto para imagen + título */
       animation:float-in .5s ease both;
     }
     .flip-inner{
@@ -101,34 +101,40 @@
       transition:transform .6s cubic-bezier(.2,.8,.2,1);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
+      background:#fff;
     }
-    /* Estado volteado por hover (desktop) */
     @media (hover:hover){
       .flip-card:hover .flip-inner{ transform:rotateY(180deg); }
     }
-    /* Estado volteado por atributo (móvil / accesible) */
     .flip-card[aria-pressed="true"] .flip-inner,
-    .flip-card[data-flipped="true"] .flip-inner{
-      transform:rotateY(180deg);
-    }
+    .flip-card[data-flipped="true"] .flip-inner{ transform:rotateY(180deg); }
 
     .flip-face{
       position:absolute; inset:0;
       border-radius:var(--radius);
       backface-visibility:hidden;
-      display:grid; place-items:center;
-      padding:18px;
+      display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+      padding:14px;
     }
     .flip-front{
-      background:#fff;
       border:1px solid #e6edf5;
+      background:#fff;
     }
-    .flip-front .title{
-      display:flex; align-items:center; gap:10px;
+    .front-media{
+      width:100%;
+      aspect-ratio:4/3; /* 4:3 recomendado */
+      border-radius:12px;
+      overflow:hidden;
+      background:#f3f6f8;
+    }
+    .front-media img{
+      width:100%; height:100%; object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+    }
+    .front-title{
+      margin:10px 6px 0;
       font-weight:800; font-size:18px; text-align:center;
-    }
-    .flip-front .title .icon{
-      font-size:22px; line-height:1;
     }
 
     .flip-back{
@@ -136,17 +142,20 @@
       background:#fffbe6;
       border:1px solid #ffe28a;
       color:#333;
+      justify-content:center;
+      text-align:center;
+      padding:22px;
     }
-    .flip-back p{margin:0; text-align:center}
+    .flip-back h3{margin:0 0 10px; font-size:18px}
+    .flip-back p{margin:0 auto; max-width:28ch; line-height:1.5}
 
-    /* Micro-interacciones */
+    /* Micro-interacciones / accesibilidad */
     .flip-card:focus-within .flip-inner{ box-shadow:0 10px 34px rgba(0,0,0,.12); }
     .flip-btn{
       position:absolute; inset:0;
       border:none; background:transparent; cursor:pointer;
       border-radius:var(--radius);
-      /* Accesibilidad */
-      color:transparent;
+      color:transparent; /* botón invisible pero accesible */
     }
     .flip-btn:focus-visible{
       outline:3px solid var(--educa-blue);
@@ -202,14 +211,14 @@
     </div>
   </nav>
 
-  <!-- HERO (solo logo grande sobre foto, altura corta) -->
+  <!-- HERO -->
   <header class="hero">
     <div class="hero-inner">
       <img class="hero-mark" src="./assets/logo_header.png" alt="EducaConRisas" />
     </div>
   </header>
 
-  <!-- INTRO (fondo blanco con titular y CTA) -->
+  <!-- INTRO -->
   <section class="intro">
     <div class="intro-inner">
       <h1 class="hero-title">Orientación educativa para familias</h1>
@@ -247,19 +256,24 @@
     </div>
   </section>
 
-  <!-- ¿QUÉ TRABAJAREMOS JUNTOS? – Flip Cards -->
+  <!-- ¿QUÉ TRABAJAREMOS JUNTOS? – Flip Cards con imagen -->
   <section class="section" id="temas" aria-labelledby="temas-title">
     <div class="flip-wrap">
       <h2 class="flip-header" id="temas-title">¿Qué trabajaremos juntos?</h2>
       <div class="flip-grid" role="list">
+
         <!-- Pantallas y límites -->
         <div class="flip-card" role="listitem" aria-pressed="false">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="title"><span class="icon">📱</span>Pantallas y límites</div>
+              <figure class="front-media">
+                <img src="./assets/topics/pantallas.jpg" alt="Familia acordando normas de pantallas" loading="lazy">
+              </figure>
+              <div class="front-title">Pantallas y límites</div>
             </div>
             <div class="flip-face flip-back">
-              <p>Contrato familiar, tiempos saludables y <strong>alternativas sin peleas</strong>.</p>
+              <h3>Pantallas y límites</h3>
+              <p>Diseñamos un <strong>contrato familiar</strong>, tiempos saludables, alternativas sin discusiones y pautas para aplicar acuerdos con calma.</p>
             </div>
           </div>
           <button class="flip-btn" aria-label="Ver detalles de Pantallas y límites"></button>
@@ -269,10 +283,14 @@
         <div class="flip-card" role="listitem" aria-pressed="false">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="title"><span class="icon">📚</span>Hábitos de estudio</div>
+              <figure class="front-media">
+                <img src="./assets/topics/habitos-estudio.jpg" alt="Niño estudiando con calendario visual" loading="lazy">
+              </figure>
+              <div class="front-title">Hábitos de estudio</div>
             </div>
             <div class="flip-face flip-back">
-              <p>Rutinas realistas, calendario visual y <strong>repaso activo</strong>.</p>
+              <h3>Hábitos de estudio</h3>
+              <p>Rutinas realistas, <strong>calendario visual</strong>, técnicas de repaso activo (flashcards, pomodoro) y seguimiento sin gritos.</p>
             </div>
           </div>
           <button class="flip-btn" aria-label="Ver detalles de Hábitos de estudio"></button>
@@ -282,10 +300,14 @@
         <div class="flip-card" role="listitem" aria-pressed="false">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="title"><span class="icon">😊</span>Convivencia y emociones</div>
+              <figure class="front-media">
+                <img src="./assets/topics/convivencia.jpg" alt="Familia dialogando de forma calmada" loading="lazy">
+              </figure>
+              <div class="front-title">Convivencia y emociones</div>
             </div>
             <div class="flip-face flip-back">
-              <p>Normas claras, refuerzos positivos y <strong>acuerdos sin gritos</strong>.</p>
+              <h3>Convivencia y emociones</h3>
+              <p>Normas claras, <strong>refuerzos positivos</strong>, resolución de conflictos y lenguaje emocional por edades.</p>
             </div>
           </div>
           <button class="flip-btn" aria-label="Ver detalles de Convivencia y emociones"></button>
@@ -295,10 +317,14 @@
         <div class="flip-card" role="listitem" aria-pressed="false">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="title"><span class="icon">🧠</span>TDAH en casa</div>
+              <figure class="front-media">
+                <img src="./assets/topics/tdah.jpg" alt="Organizadores y temporizadores para TDAH" loading="lazy">
+              </figure>
+              <div class="front-title">TDAH en casa</div>
             </div>
             <div class="flip-face flip-back">
-              <p>Organización, timers, checklist y <strong>coordinación con el centro</strong>.</p>
+              <h3>TDAH en casa</h3>
+              <p>Organización del entorno, <strong>timers</strong>, checklist visual, descomposición de tareas y coordinación con el centro.</p>
             </div>
           </div>
           <button class="flip-btn" aria-label="Ver detalles de TDAH en casa"></button>
@@ -308,10 +334,14 @@
         <div class="flip-card" role="listitem" aria-pressed="false">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="title"><span class="icon">🌧️</span>Rabietas y desescalada</div>
+              <figure class="front-media">
+                <img src="./assets/topics/rabietas.jpg" alt="Madre calmando a su hijo durante una rabieta" loading="lazy">
+              </figure>
+              <div class="front-title">Rabietas y desescalada</div>
             </div>
             <div class="flip-face flip-back">
-              <p>Estrategias de calma y <strong>comunicación por edades</strong>.</p>
+              <h3>Rabietas y desescalada</h3>
+              <p>Estrategias de calma, pasos de <strong>desescalada</strong> según edad y guiones para comunicar límites con cariño.</p>
             </div>
           </div>
           <button class="flip-btn" aria-label="Ver detalles de Rabietas y desescalada"></button>
@@ -321,14 +351,19 @@
         <div class="flip-card" role="listitem" aria-pressed="false">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="title"><span class="icon">👨‍👩‍👧‍👦</span>Reunión familiar</div>
+              <figure class="front-media">
+                <img src="./assets/topics/reunion-familiar.jpg" alt="Familia realizando una reunión semanal" loading="lazy">
+              </figure>
+              <div class="front-title">Reunión familiar</div>
             </div>
             <div class="flip-face flip-back">
-              <p>Agenda semanal, acuerdos y <strong>celebraciones para crecer</strong>.</p>
+              <h3>Reunión familiar</h3>
+              <p>Agenda semanal, acuerdos sencillos, <strong>celebración de logros</strong> y revisión de lo que funciona.</p>
             </div>
           </div>
           <button class="flip-btn" aria-label="Ver detalles de Reunión familiar"></button>
         </div>
+
       </div>
     </div>
   </section>
@@ -357,5 +392,55 @@
     <div class="porque">
       <h2>¿Por qué <span class="edu">E</span><span class="con">C</span><span class="risas">R</span>?</h2>
       <p>Porque la crianza no debería vivirse en soledad. En <strong>EducaConRisas</strong> acompañamos con una mirada pedagógica y afectiva para que cada familia encuentre su propio equilibrio entre límites y cariño.</p>
-      <p>Como <strong>pedagoga</strong> y <strong>psicóloga en formación</strong>, Irina integra herramientas prácticas (contratos de pantallas, rutinas visuales, técnicas de estudio, desescalada por edades) con un estilo cercano y claro. Transformamos “t
+      <p>Como <strong>pedagoga</strong> y <strong>psicóloga en formación</strong>, Irina integra herramientas prácticas (contratos de pantallas, rutinas visuales, técnicas de estudio, desescalada por edades) con un estilo cercano y claro. Transformamos “todo son peleas” en “tenemos acuerdos que funcionan”.</p>
+      <ul>
+        <li>Metodología sencilla y accionable, centrada en objetivos.</li>
+        <li>Materiales listos para usar (checklists, calendarios, guías).</li>
+        <li>Seguimiento realista para consolidar hábitos.</li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- CONTACTO -->
+  <section class="section contacto" id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Hablamos? Reserva tu primera sesión gratuita o escríbeme directamente:</p>
+    <div class="list">
+      <a class="chip" href="https://wa.me/34620716794" target="_blank" rel="noopener">💬 <b>WhatsApp</b> · +34 620 716 794</a>
+      <a class="chip" href="https://instagram.com/educaconrisas" target="_blank" rel="noopener">📷 <b>Instagram</b> · @educaconrisas</a>
+      <a class="chip" href="mailto:educaconrisas@gmail.com">✉️ <b>Email</b> · educaconrisas@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    ©
+  </footer>
+
+  <script>
+    // Resaltar el enlace del menú según el scroll
+    const links=[...document.querySelectorAll('.menu a')];
+    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    function onScroll(){
+      let i=sections.findIndex(s=>s.getBoundingClientRect().top>80); if(i===-1) i=sections.length; const cur=links[Math.max(0,i-1)];
+      links.forEach(a=>a.style.fontWeight='500'); if(cur) cur.style.fontWeight='800';
+    }
+    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    // FLIP: click/tap accesible para móvil y teclado
+    document.querySelectorAll('.flip-card').forEach(card=>{
+      const btn=card.querySelector('.flip-btn');
+      btn.addEventListener('click', ()=>{
+        const flipped = card.getAttribute('aria-pressed') === 'true';
+        card.setAttribute('aria-pressed', String(!flipped));
+        card.dataset.flipped = String(!flipped);
+      });
+      btn.addEventListener('keydown', e=>{
+        if(e.key==='Enter' || e.key===' '){
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
