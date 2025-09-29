@@ -5,17 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EducaConRisas – Orientación educativa para familias</title>
   <meta name="description" content="Orientación educativa cercana y práctica: límites con amor, hábitos de estudio, convivencia, TDAH en casa, rabietas y reuniones familiares. Primera sesión gratis." />
-  <link rel="preload" as="image" href="./assets/familia-fondo.png" fetchpriority="high" />
-  <meta name="theme-color" content="#2da6b1" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="EducaConRisas – Orientación educativa para familias" />
-  <meta property="og:description" content="Límites con amor, hábitos de estudio, convivencia, TDAH en casa y más. Primera sesión gratis." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="./assets/og-cover.jpg" />
-  <meta property="og:locale" content="es_ES" />
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-
+  <link rel="preload" as="image" href="./assets/familia-fondo.png" />
   <style>
     :root{
       --educa-blue:#2da6b1;   /* Azul (Educa) */
@@ -35,10 +25,6 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block;height:auto}
 
-    /* Skip link */
-    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;background:#000;color:#fff;padding:10px 14px;border-radius:10px;z-index:100}
-
     /* NAV */
     .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e9eef3;backdrop-filter:saturate(180%) blur(8px)}
     .wrap{max-width:1100px;margin:0 auto;padding:10px 16px}
@@ -52,7 +38,6 @@
     .menu{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
     .menu a{padding:8px 10px;border-radius:10px;color:#000;font-weight:500}
     .menu a:hover{background:#f2f7f8}
-    .menu a[aria-current="true"]{font-weight:800}
 
     /* HERO */
     .hero{position:relative;min-height:36vh;display:grid;place-items:center;text-align:center;overflow:hidden}
@@ -203,16 +188,16 @@
 
     footer{padding:28px 16px;color:#667;text-align:center}
 
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important;transition:none !important}
-      .flip-inner{transform:none !important}
-    }
-
     /* Responsive */
     @media (max-width:960px){
-      .hub{ grid-template-columns:1fr; gap:20px; }
-      .hub-side{ grid-template-columns:repeat(2,minmax(220px,1fr)); grid-template-rows:auto; }
+      .hub{
+        grid-template-columns:1fr;
+        gap:20px;
+      }
+      .hub-side{
+        grid-template-columns:repeat(2,minmax(220px,1fr));
+        grid-template-rows:auto;
+      }
       .hub-side + .hub-center{ order:-1; } /* círculo arriba */
     }
     @media (max-width:640px){
@@ -224,13 +209,12 @@
   </style>
 </head>
 <body>
-  <a href="#inicio" class="skip">Saltar a contenido</a>
   <!-- NAV -->
   <nav class="nav" id="inicio">
     <div class="wrap">
       <div class="row">
         <a class="brand" href="#inicio" aria-label="EducaConRisas">
-          <img src="./assets/logo-ecr.png" width="42" height="42" alt="Logo EducaConRisas" />
+          <img src="./assets/logo-ecr.png" alt="Logo EducaConRisas" />
           <span class="name"><span class="edu">Educa</span><span class="con">Con</span><span class="risas">Risas</span></span>
         </a>
         <div class="menu" role="navigation" aria-label="principal">
@@ -246,16 +230,16 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero" aria-label="Cabecera">
+  <header class="hero">
     <div class="hero-inner">
-      <img class="hero-mark" src="./assets/logo_header.png" width="380" height="140" alt="EducaConRisas" />
+      <img class="hero-mark" src="./assets/logo_header.png" alt="EducaConRisas" />
     </div>
   </header>
 
   <!-- INTRO -->
-  <section class="intro" aria-labelledby="tit-intro">
+  <section class="intro">
     <div class="intro-inner">
-      <h1 id="tit-intro" class="hero-title">Orientación educativa para familias</h1>
+      <h1 class="hero-title">Orientación educativa para familias</h1>
       <p class="tagline">
         <span class="limites">Límites</span> con <span class="amor">amor</span> para que las crianzas sean más fáciles y <span class="divertidas">divertidas</span>.
       </p>
@@ -267,33 +251,31 @@
   </section>
 
   <!-- SOBRE MI -->
-  <section class="section" id="sobre-mi" aria-labelledby="tit-sobre-mi">
+  <section class="section" id="sobre-mi">
     <div class="sobre-mi">
       <div class="pic">
         <picture>
           <source srcset="./assets/irina.png" type="image/png" />
           <source srcset="./assets/irina.jpg" type="image/jpeg" />
-          <img src="./assets/irina.png" alt="Irina García" loading="lazy" width="120" height="120" />
+          <img src="./assets/irina.png" alt="Irina García" loading="lazy" />
         </picture>
       </div>
       <div>
-        <h2 id="tit-sobre-mi">Hola, soy Irina García</h2>
+        <h2>Hola, soy Irina García</h2>
         <p>Pedagoga y <strong>psicóloga en formación</strong>. Acompaño a familias para poner <em>límites con amor</em>, crear rutinas realistas y disfrutar más de la convivencia. He creado <strong><span style="color:var(--educa-blue)">Educa</span><span style="color:var(--con-salmon)">Con</span><span style="color:var(--risas-yellow)">Risas</span></strong> como un espacio práctico y cercano para transformar la crianza del “no sabemos por dónde empezar” al “¡lo estamos consiguiendo!”.</p>
       </div>
     </div>
   </section>
 
   <!-- TE IMAGINAS -->
-  <section class="section" id="te-imaginas" aria-labelledby="tit-ti">
+  <section class="section" id="te-imaginas">
     <div class="panel-azul">
-      <h2 id="tit-ti" style="margin-top:0">¿Te imaginas…?</h2>
       <p><strong>¿Te imaginas</strong> que la gran tarea de ser padre y madre se llegue a convertir en un disfrute? <strong>EducaConRisas</strong> se ha creado como recurso para contribuir a calmar la angustia que puede generar la crianza y ofrecer <strong>herramientas concretas</strong>, acuerdos familiares y seguimiento para que no os sintáis solos en el proceso.</p>
     </div>
   </section>
 
   <!-- ¿QUÉ TRABAJAREMOS JUNTOS? – HUB -->
   <section class="section" id="temas" aria-labelledby="temas-title">
-    <h2 id="temas-title" style="margin-top:0">¿Qué trabajaremos juntos?</h2>
     <div class="hub">
       <!-- LADO IZQUIERDO (3) -->
       <div class="hub-side" role="list">
@@ -302,7 +284,7 @@
           <div class="flip-inner">
             <div class="flip-face flip-front">
               <figure class="front-media">
-                <img src="./assets/topics/pantallas.png" alt="Familia acordando normas de pantallas" loading="lazy" width="640" height="480">
+                <img src="./assets/topics/Pantallas.png" alt="Familia acordando normas de pantallas" loading="lazy">
               </figure>
               <div class="front-title">Pantallas y límites</div>
             </div>
@@ -319,7 +301,7 @@
           <div class="flip-inner">
             <div class="flip-face flip-front">
               <figure class="front-media">
-                <img src="./assets/topics/habitos-estudio.png" alt="Niño estudiando con calendario visual" loading="lazy" width="640" height="480">
+                <img src="./assets/topics/habitos de estudio.png" alt="Niño estudiando con calendario visual" loading="lazy">
               </figure>
               <div class="front-title">Hábitos de estudio</div>
             </div>
@@ -336,7 +318,7 @@
           <div class="flip-inner">
             <div class="flip-face flip-front">
               <figure class="front-media">
-                <img src="./assets/topics/convivencia.png" alt="Familia dialogando de forma calmada" loading="lazy" width="640" height="480">
+                <img src="./assets/topics/Convivencia.png" alt="Familia dialogando de forma calmada" loading="lazy">
               </figure>
               <div class="front-title">Convivencia y emociones</div>
             </div>
@@ -350,7 +332,7 @@
       </div>
 
       <!-- CÍRCULO CENTRAL -->
-      <div class="hub-center" aria-hidden="true">
+      <div class="hub-center">
         <h2>¿Qué<br>trabajaremos<br>juntos?</h2>
       </div>
 
@@ -361,7 +343,7 @@
           <div class="flip-inner">
             <div class="flip-face flip-front">
               <figure class="front-media">
-                <img src="./assets/topics/tdah.png" alt="Organizadores y temporizadores para TDAH" loading="lazy" width="640" height="480">
+                <img src="./assets/topics/tdah.png" alt="Organizadores y temporizadores para TDAH" loading="lazy">
               </figure>
               <div class="front-title">TDAH en casa</div>
             </div>
@@ -378,7 +360,7 @@
           <div class="flip-inner">
             <div class="flip-face flip-front">
               <figure class="front-media">
-                <img src="./assets/topics/rabietas.png" alt="Madre calmando a su hijo durante una rabieta" loading="lazy" width="640" height="480">
+                <img src="./assets/topics/rabietas.png" alt="Madre calmando a su hijo durante una rabieta" loading="lazy">
               </figure>
               <div class="front-title">Rabietas y desescalada</div>
             </div>
@@ -395,7 +377,7 @@
           <div class="flip-inner">
             <div class="flip-face flip-front">
               <figure class="front-media">
-                <img src="./assets/topics/reunion-familiar.png" alt="Familia realizando una reunión semanal" loading="lazy" width="640" height="480">
+                <img src="./assets/topics/reunión familiar.png" alt="Familia realizando una reunión semanal" loading="lazy">
               </figure>
               <div class="front-title">Reunión familiar</div>
             </div>
@@ -411,8 +393,8 @@
   </section>
 
   <!-- ACOMPANAMIENTO -->
-  <section class="section" id="acompanamiento" aria-labelledby="tit-acom">
-    <h2 id="tit-acom" style="margin-top:0">Acompañamiento</h2>
+  <section class="section" id="acompanamiento">
+    <h2 style="margin-top:0">Acompañamiento</h2>
     <div class="acomp">
       <div class="step">
         <h3>🎁 Primera sesión <u>GRATIS</u></h3>
@@ -430,9 +412,9 @@
   </section>
 
   <!-- POR QUÉ ECR -->
-  <section class="section" id="porque-ecr" aria-labelledby="tit-why">
+  <section class="section" id="porque-ecr">
     <div class="porque">
-      <h2 id="tit-why">¿Por qué <span class="edu">E</span><span class="con">C</span><span class="risas">R</span>?</h2>
+      <h2>¿Por qué <span class="edu">E</span><span class="con">C</span><span class="risas">R</span>?</h2>
       <p>Porque la crianza no debería vivirse en soledad. En <strong>EducaConRisas</strong> acompañamos con una mirada pedagógica y afectiva para que cada familia encuentre su propio equilibrio entre límites y cariño.</p>
       <p>Como <strong>pedagoga</strong> y <strong>psicóloga en formación</strong>, Irina integra herramientas prácticas (contratos de pantallas, rutinas visuales, técnicas de estudio, desescalada por edades) con un estilo cercano y claro. Transformamos “todo son peleas” en “tenemos acuerdos que funcionan”.</p>
       <ul>
@@ -444,8 +426,8 @@
   </section>
 
   <!-- CONTACTO -->
-  <section class="section contacto" id="contacto" aria-labelledby="tit-contacto">
-    <h2 id="tit-contacto">Contacto</h2>
+  <section class="section contacto" id="contacto">
+    <h2>Contacto</h2>
     <p>¿Hablamos? Reserva tu primera sesión gratuita o escríbeme directamente:</p>
     <div class="list">
       <a class="chip" href="https://wa.me/34620716794" target="_blank" rel="noopener">💬 <b>WhatsApp</b> · +34 620 716 794</a>
@@ -454,28 +436,19 @@
     </div>
   </section>
 
-  <footer role="contentinfo">
-    © <span id="y"></span> EducaConRisas
+  <footer>
+    ©
   </footer>
 
   <script>
-    // Año dinámico
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Resaltar el enlace del menú (IntersectionObserver = performante)
-    const menuLinks = [...document.querySelectorAll('.menu a')];
-    const targets = menuLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          const id = '#' + entry.target.id;
-          menuLinks.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === id ? 'true' : 'false'));
-        }
-      });
-    }, {rootMargin:'-40% 0px -55% 0px', threshold:[0, 1]});
-
-    targets.forEach(sec => io.observe(sec));
+    // Resaltar el enlace del menú según el scroll
+    const links=[...document.querySelectorAll('.menu a')];
+    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    function onScroll(){
+      let i=sections.findIndex(s=>s.getBoundingClientRect().top>80); if(i===-1) i=sections.length; const cur=links[Math.max(0,i-1)];
+      links.forEach(a=>a.style.fontWeight='500'); if(cur) cur.style.fontWeight='800';
+    }
+    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
     // FLIP: click/tap accesible para móvil y teclado
     document.querySelectorAll('.flip-card').forEach(card=>{
@@ -495,8 +468,7 @@
   </script>
 </body>
 </html>
-    });
-  </script>
+
 </body>
 </html>
 
